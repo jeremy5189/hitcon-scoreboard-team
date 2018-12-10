@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <TopDisplay text="Score 100000"></TopDisplay>
+          <TopDisplay :text="`Score ${server.score}`"></TopDisplay>
         </div>
         <div class="col-1"></div>
         <div class="col-4">
-          <TopDisplay text="Team Name"></TopDisplay>
+          <TopDisplay :text="server.teamname"></TopDisplay>
         </div>
         <div class="col-1"></div>
         <div class="col">
@@ -19,7 +19,9 @@
           <LeftDisplay></LeftDisplay>
         </div>
         <div class="col-6">
-          <FlashAlert v-if="server.under_attack"></FlashAlert>
+          <FlashAlert
+            v-if="server.under_attack || server.ddos > 0"
+          ></FlashAlert>
         </div>
         <div class="col">
           <RightDisplay></RightDisplay>
@@ -36,6 +38,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import TopDisplay from './components/TopDisplay.vue';
 import LeftDisplay from './components/LeftDisplay.vue';
 import RightDisplay from './components/RightDisplay.vue';
@@ -55,11 +58,24 @@ export default {
   },
   data() {
     return {
-      server: {
-        under_attack: false,
-        ddos: 0,
-      },
+      //
     };
+  },
+  created() {
+    this.setTeamId('T1');
+    this.fetchServerData(this.teamId);
+  },
+  methods: {
+    ...mapActions([
+      'setTeamId',
+      'fetchServerData',
+    ]),
+  },
+  computed: {
+    ...mapState([
+      'server',
+      'teamId',
+    ]),
   },
 };
 </script>

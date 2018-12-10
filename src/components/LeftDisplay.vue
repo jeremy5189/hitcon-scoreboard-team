@@ -2,16 +2,20 @@
   <div id="LeftDisplay">
     <span>
       <h3>INCOMING ATTACK</h3>
-      <h1>WARNING</h1>
+      <h1 :class="server.under_attack ? 'warning' : 'normal'">
+        {{ server.under_attack ? 'WARNING' : '-' }}
+      </h1>
     </span>
     <span>
       <h3>INCOMING DDOS</h3>
-      <h1>100</h1>
+      <h1>{{ server.ddos }}</h1>
     </span>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'LeftDisplay',
   props: {
@@ -19,6 +23,11 @@ export default {
       type: String,
       default: '-',
     },
+  },
+  computed: {
+    ...mapState([
+      'server',
+    ]),
   },
 };
 </script>
@@ -43,5 +52,8 @@ span {
   align-self: center;
   font-weight: 500;
   text-align: center;
+}
+h1.warning {
+  color: rgba(212, 5, 1, 0.8);
 }
 </style>

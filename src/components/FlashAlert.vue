@@ -1,19 +1,26 @@
 <template>
-  <div id="FlashAlert" class="flashit ">
-    <h1>{{ text }}</h1>
+  <div id="FlashAlert" class="flashit">
+    <h1>WARNING: INCOMING {{ attack_type }}</h1>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'FlashAlert',
-  created() {
-
-  },
-  props: {
-    text: {
-      type: String,
-      default: 'WARNING: INCOMING ATTACK',
+  computed: {
+    ...mapState([
+      'server',
+    ]),
+    attack_type() {
+      if (this.server.under_attack && this.server.ddos <= 0) {
+        return 'ATTACK';
+      }
+      if (this.server.under_attack && this.server.ddos > 0) {
+        return 'ATTACK & DDOS';
+      }
+      return 'DDOS';
     },
   },
 };
@@ -28,7 +35,7 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 750px;
+  width: 850px;
   height: 90px;
   flex-direction: column;
 }
@@ -37,6 +44,7 @@ h1 {
   align-self: center;
   font-weight: 500;
   margin-bottom: 0px;
+  font-size: 40px;
 }
 /* Flash class and keyframe animation */
 .flashit{

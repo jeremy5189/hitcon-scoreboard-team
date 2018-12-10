@@ -2,26 +2,44 @@
   <div id="LeftDisplay">
     <span>
       <h3>SERVICE: Web</h3>
-      <h1>UP</h1>
+      <h1 :class="displayBoolean(server.alive_web)">
+        {{ displayBoolean(server.alive_web) }}
+      </h1>
     </span>
     <span>
       <h3>SERVICE: ERP</h3>
-      <h1>UP</h1>
+      <h1 :class="displayBoolean(server.alive_erp)">
+        {{ displayBoolean(server.alive_erp) }}
+      </h1>
     </span>
     <span>
       <h3>SERVICE: SSLVPN</h3>
-      <h1>UP</h1>
+      <h1 :class="displayBoolean(server.alive_sslvpn)">
+        {{ displayBoolean(server.alive_sslvpn) }}
+      </h1>
     </span>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'LeftDisplay',
   props: {
     text: {
       type: String,
       default: '-',
+    },
+  },
+  computed: {
+    ...mapState([
+      'server',
+    ]),
+  },
+  methods: {
+    displayBoolean(bool) {
+      return bool ? 'UP' : 'DOWN';
     },
   },
 };
@@ -47,5 +65,8 @@ span {
   align-self: center;
   font-weight: 500;
   text-align: center;
+}
+h1.DOWN {
+  color: rgba(212, 5, 1, 0.8);
 }
 </style>

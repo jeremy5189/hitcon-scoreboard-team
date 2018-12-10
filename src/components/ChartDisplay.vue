@@ -2,17 +2,29 @@
   <div id="ChartDisplay">
     <div class="row">
       <div class="col">
-        <Chart></Chart>
+        <Chart
+          title="BANDWITH"
+          :current_value="0"
+          unit="bps"
+        ></Chart>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <Chart></Chart>
+        <Chart
+          title="ENERGY"
+          :current_value="0"
+          unit="kW"
+        ></Chart>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <Chart></Chart>
+        <Chart
+          title="WIFI CLIENT"
+          :current_value="0"
+          unit=""
+        ></Chart>
       </div>
     </div>
   </div>
