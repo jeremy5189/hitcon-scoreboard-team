@@ -47,7 +47,9 @@ export default {
   },
   created() {
     this.handle = setInterval(() => {
-      this.fetchServerData();
+      this.fetchServerData().then(() => {
+        this.updateChart();
+      });
     }, config.fetchInterval);
   },
   computed: {
@@ -59,6 +61,9 @@ export default {
     ...mapActions([
       'fetchServerData',
     ]),
+    updateChart() {
+      console.log('updateChart', this.server);
+    },
   },
 };
 </script>

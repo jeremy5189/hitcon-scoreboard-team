@@ -40,7 +40,6 @@ export default new Vuex.Store({
           team_id: teamId,
         },
       }).then((resp) => {
-        console.log(resp.data);
         resp.data.alive_level = resp.data.alive_web
           + resp.data.alive_erp
           + resp.data.alive_sslvpn;
