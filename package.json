@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "mock": "php -S 0.0.0.0:8003 mock-server/server.php"
+    "mock": "php -S 0.0.0.0:8003 mock-server/server.php",
+    "mock-vtime": "php -S 0.0.0.0:8004 mock-server/vtime.php"
   },
   "dependencies": {
     "axios": "^0.18.0",
