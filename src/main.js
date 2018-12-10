@@ -1,7 +1,4 @@
-// import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap';
-
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/scss/bootstrap.scss';
 
 import Vue from 'vue';

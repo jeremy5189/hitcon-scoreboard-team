@@ -59,7 +59,7 @@ export default {
         under_attack: false,
         ddos: 0,
       },
-    }
+    };
   },
 };
 </script>

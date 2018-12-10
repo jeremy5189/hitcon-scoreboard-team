@@ -8,6 +8,7 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+npm run mock # Start mock server by php at localhost:8003
 ```
 
 ### Compiles and minifies for production
