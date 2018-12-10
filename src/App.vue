@@ -91,6 +91,7 @@ export default {
 <style>
 body {
   margin: 0px;
+  overflow: hidden;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
