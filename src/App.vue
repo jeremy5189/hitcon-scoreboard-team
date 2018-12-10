@@ -3,13 +3,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
+          <TopDisplay text="Score 100000"></TopDisplay>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4">
           <TopDisplay text="Team Name"></TopDisplay>
         </div>
-        <div class="col-6">
-          <!-- Empty in the center -->
-        </div>
+        <div class="col-1"></div>
         <div class="col">
-          <TopDisplay text="Day 0 / Hour 00"></TopDisplay>
+          <TopDisplay text="Day 100 / Hour 00"></TopDisplay>
         </div>
       </div>
       <div class="row middle-row">
@@ -54,7 +56,7 @@ export default {
   data() {
     return {
       server: {
-        under_attack: false,
+        under_attack: true,
         ddos: 0,
       },
     }

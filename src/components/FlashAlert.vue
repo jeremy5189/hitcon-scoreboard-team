@@ -13,7 +13,7 @@ export default {
   props: {
     text: {
       type: String,
-      default: 'Warning: Incomming Phaser',
+      default: 'WARNING: INCOMING ATTACK',
     },
   },
 };
@@ -28,7 +28,7 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 700px;
+  width: 750px;
   height: 90px;
   flex-direction: column;
 }

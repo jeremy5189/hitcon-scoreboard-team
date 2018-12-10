@@ -1,8 +1,17 @@
 <template>
   <div id="LeftDisplay">
-    <h1>{{ text }}</h1>
-    <h1>{{ text }}</h1>
-    <h1>{{ text }}</h1>
+    <span>
+      <h3>SERVICE: Web</h3>
+      <h1>UP</h1>
+    </span>
+    <span>
+      <h3>SERVICE: ERP</h3>
+      <h1>UP</h1>
+    </span>
+    <span>
+      <h3>SERVICE: SSLVPN</h3>
+      <h1>UP</h1>
+    </span>
   </div>
 </template>
 
@@ -25,17 +34,18 @@ export default {
   border-radius: 10px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
   height: 450px;
   margin-right: -25px;
   margin-left: 150px;
   flex-direction: column;
+  padding: 20px 0px;
 }
-h1 {
+span {
   color: #a1ecfb;
   align-self: center;
   font-weight: 500;
-  margin-bottom: 15px;
+  text-align: center;
 }
 </style>
