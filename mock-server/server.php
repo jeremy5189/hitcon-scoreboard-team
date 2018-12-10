@@ -15,4 +15,17 @@ $mock = [
   'wifi' => rand(0, 100)
 ];
 
+$mock2 = [
+  'teamname' => '隊伍 1',
+  'under_attack' => true,
+  'ddos' => true,
+  'score' => rand(0, 100),
+  'alive_web' => false,
+  'alive_erp' => false,
+  'alive_sslvpn' => false,
+  'bandwidth' => rand(0, 100),
+  'energy' => rand(0, 100),
+  'wifi' => rand(0, 100)
+];
+
 echo json_encode($mock);
