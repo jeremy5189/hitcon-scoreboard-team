@@ -48,5 +48,6 @@ h1 {
 }
 .col {
   border-bottom: 2px solid #a1ecfb;
+  margin: 0 18px;
 }
 </style>

@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       server: {
-        under_attack: true,
+        under_attack: false,
         ddos: 0,
       },
     }
