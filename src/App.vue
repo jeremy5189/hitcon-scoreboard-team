@@ -17,7 +17,7 @@
           <LeftDisplay></LeftDisplay>
         </div>
         <div class="col-6">
-          <!-- Empty in the center -->
+          <FlashAlert v-if="server.under_attack"></FlashAlert>
         </div>
         <div class="col">
           <RightDisplay></RightDisplay>
@@ -29,6 +29,7 @@
         </div>
       </div>
     </div>
+    <Overlay v-if="server.ddos > 0"></Overlay>
   </div>
 </template>
 
@@ -37,6 +38,8 @@ import TopDisplay from './components/TopDisplay.vue';
 import LeftDisplay from './components/LeftDisplay.vue';
 import RightDisplay from './components/RightDisplay.vue';
 import ChartDisplay from './components/ChartDisplay.vue';
+import FlashAlert from './components/FlashAlert.vue';
+import Overlay from './components/Overlay.vue';
 
 export default {
   name: 'app',
@@ -45,6 +48,16 @@ export default {
     LeftDisplay,
     RightDisplay,
     ChartDisplay,
+    FlashAlert,
+    Overlay,
+  },
+  data() {
+    return {
+      server: {
+        under_attack: false,
+        ddos: 0,
+      },
+    }
   },
 };
 </script>
@@ -64,6 +77,11 @@ body {
 }
 .middle-row {
   margin-top: 90px;
+}
+.middle-row .col-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .bottom-row .col {
   padding: 0px 0px;

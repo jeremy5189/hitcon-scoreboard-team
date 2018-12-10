@@ -25,7 +25,7 @@ export default {
   name: 'ChartDisplay',
   components: {
     Chart,
-  }
+  },
 };
 </script>
 
