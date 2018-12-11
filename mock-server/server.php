@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: content-type");
 
 function purebell($min,$max,$std_deviation,$step=1) {
   $rand1 = (float)mt_rand()/(float)mt_getrandmax();
