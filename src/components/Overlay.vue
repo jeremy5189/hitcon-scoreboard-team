@@ -17,7 +17,7 @@ export default {
   left: 0px;
   z-index: 1000;
   background-color: #12F42C;
-  opacity: 0.2;
+  opacity: 0.15;
 }
 /* Flash class and keyframe animation */
 .flashit {

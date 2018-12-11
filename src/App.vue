@@ -22,6 +22,7 @@
           <FlashAlert
             v-if="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
           ></FlashAlert>
+          <StaticText v-else></StaticText>
         </div>
         <div class="col">
           <RightDisplay></RightDisplay>
@@ -44,6 +45,7 @@ import LeftDisplay from './components/LeftDisplay.vue';
 import RightDisplay from './components/RightDisplay.vue';
 import ChartDisplay from './components/ChartDisplay.vue';
 import FlashAlert from './components/FlashAlert.vue';
+import StaticText from './components/StaticText.vue';
 import Overlay from './components/Overlay.vue';
 import config from './config';
 
@@ -56,6 +58,7 @@ export default {
     ChartDisplay,
     FlashAlert,
     Overlay,
+    StaticText,
   },
   data() {
     return {
