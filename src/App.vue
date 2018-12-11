@@ -63,7 +63,10 @@ export default {
     };
   },
   created() {
-    this.setTeamId('T1');
+    const urlParams = new URLSearchParams(window.location.search);
+    const teamId = urlParams.get('team_id');
+    console.log('?teamId=', teamId);
+    this.setTeamId(teamId === null ? '1' : teamId);
     this.fetchServerData(this.teamId);
     this.fetchVTime().then(() => {
       this.vtimeHandle = setInterval(() => {
@@ -94,7 +97,7 @@ body {
   overflow: hidden;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1920px;

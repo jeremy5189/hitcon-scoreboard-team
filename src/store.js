@@ -42,10 +42,8 @@ export default new Vuex.Store({
       commit('SET_TEAM_ID', teamId);
     },
     fetchServerData({ commit }, teamId) {
-      axios.get(`${config.baseURL}${config.teamPath}`, {
-        params: {
-          team_id: teamId,
-        },
+      axios.post(`${config.baseURL}${config.teamPath}`, {
+        team_id: teamId,
       }).then((resp) => {
         resp.data.alive_level = resp.data.alive_web
           + resp.data.alive_erp

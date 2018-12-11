@@ -8,7 +8,7 @@
     </span>
     <span>
       <h3>INCOMING DDOS</h3>
-      <h1>{{ server.ddos }}</h1>
+      <h1>{{ ddosLevel }}</h1>
     </span>
   </div>
 </template>
@@ -28,6 +28,17 @@ export default {
     ...mapState([
       'server',
     ]),
+    ddosLevel() {
+      if (this.server.ddos <= 33) {
+        return 'LOW';
+      }
+      else if (this.server.ddos > 33 && this.server.ddos <= 66) {
+        return 'MEDIUM';
+      }
+      else {
+        return 'HIGH';
+      }
+    },
   },
 };
 </script>
