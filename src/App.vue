@@ -20,7 +20,8 @@
         </div>
         <div class="col-6">
           <FlashAlert
-            v-if="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
+            v-if_="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
+            v-if="false"
           ></FlashAlert>
         </div>
         <div class="col">
@@ -33,7 +34,7 @@
         </div>
       </div>
     </div>
-    <Overlay v-if="server.ddos > 0 && server.alive_level > 0"></Overlay>
+    <Overlay v-if_="server.ddos > 0 && server.alive_level" v-if="false" > 0"></Overlay>
   </div>
 </template>
 

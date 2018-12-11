@@ -9,6 +9,7 @@
         ></Chart>
       </div>
     </div>
+    <!--
     <div class="row">
       <div class="col">
         <Chart
@@ -26,7 +27,7 @@
           unit=""
         ></Chart>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -62,7 +63,7 @@ export default {
       'fetchServerData',
     ]),
     updateChart() {
-      console.log('updateChart', this.server);
+      //console.log('updateChart', this.server);
     },
   },
 };
