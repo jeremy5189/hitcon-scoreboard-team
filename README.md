@@ -7,6 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
+cp src/config.example.js src/config.js
 npm run serve
 npm run mock # Start mock server by php at localhost:8003
 npm run mock-vtime # Start mock server by php at localhost:8004
@@ -14,6 +15,7 @@ npm run mock-vtime # Start mock server by php at localhost:8004
 
 ### Compiles and minifies for production
 ```
+cp src/config.example.js src/config.js
 npm run build
 ```
 
