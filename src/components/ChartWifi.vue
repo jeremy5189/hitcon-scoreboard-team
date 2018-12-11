@@ -5,7 +5,7 @@
         <h1>{{ title }}</h1>
       </div>
       <div class="col-8 col-center">
-        <svg>
+        <svg id="svgc">
           <svg:style>
             path {
               fill: none;
@@ -25,11 +25,11 @@
 <script>
 import * as d3 from 'd3';
 
-let _a_data;
-let _a_x;
-let _a_y;
-let _a_createPath;
-let _a_svg;
+let _c_data;
+let _c_x;
+let _c_y;
+let _c_createPath;
+let _c_svg;
 
 export default {
   name: 'Chart',
@@ -54,17 +54,17 @@ export default {
   },
   mounted() {
     const random = d3.randomNormal(50, 20);
-    _a_data = Array.from({ length: 37 }, () => random()).concat(this.current_value);
-    _a_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
-    _a_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
+    _c_data = Array.from({ length: 39 }, () => random()).concat(this.current_value);
+    _c_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
+    _c_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
 
-    _a_createPath = d3.line()
-      .x((d, i) => _a_x(i))
-      .y(d => _a_y(d));
-    _a_svg = d3.select('svg')
+    _c_createPath = d3.line()
+      .x((d, i) => _c_x(i))
+      .y(d => _c_y(d));
+    _c_svg = d3.select('#svgc')
       .append('g').append('path');
 
-    _a_svg.datum(_a_data)
+    _c_svg.datum(_c_data)
       .transition()
       .duration(1000)
       .ease(d3.easeLinear)
@@ -73,20 +73,20 @@ export default {
   methods: {
     tick() {
       // Push a new data point onto the back.
-      _a_data.push(this.current_value);
+      _c_data.push(this.current_value);
 
       // Redraw the line.
-      _a_svg.attr('d', _a_createPath)
+      _c_svg.attr('d', _c_createPath)
         .attr('transform', null);
 
       // Slide it to the left.
-      d3.active(_a_svg.node())
-        .attr('transform', `translate(${_a_x(-1)},0)`)
+      d3.active(_c_svg.node())
+        .attr('transform', `translate(${_c_x(-1)},0)`)
         .transition()
         .on('start', this.tick);
 
       // Pop the old data point off the front.
-      _a_data.shift();
+      _c_data.shift();
     },
   },
 };
@@ -97,7 +97,7 @@ export default {
   height: 125px;
 }
 
-#Chart svg {
+#Chart svg {;
   width: 1256px;
   height: 100%;
 }

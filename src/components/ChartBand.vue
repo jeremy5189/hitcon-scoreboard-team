@@ -5,7 +5,7 @@
         <h1>{{ title }}</h1>
       </div>
       <div class="col-8 col-center">
-        <svg>
+        <svg id="svga">
           <svg:style>
             path {
               fill: none;
@@ -54,7 +54,7 @@ export default {
   },
   mounted() {
     const random = d3.randomNormal(50, 20);
-    _a_data = Array.from({ length: 37 }, () => random()).concat(this.current_value);
+    _a_data = Array.from({ length: 39 }, () => random()).concat(this.current_value);
     _a_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
     _a_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
 

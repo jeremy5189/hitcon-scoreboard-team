@@ -2,29 +2,29 @@
   <div id="ChartDisplay">
     <div class="row">
       <div class="col">
-        <Chart
+        <ChartBand
           title="BANDWIDTH"
           :current_value="server.bandwidth"
           unit="bps"
-        ></Chart>
+        ></ChartBand>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <Chart
+        <ChartEnergy
           title="ENERGY"
           :current_value="server.energy"
           unit="kW"
-        ></Chart>
+        ></ChartEnergy>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <Chart
+        <ChartWifi
           title="WIFI CLIENT"
           :current_value="server.wifi"
           unit=""
-        ></Chart>
+        ></ChartWifi>
       </div>
     </div>
   </div>
@@ -32,13 +32,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import Chart from './Chart.vue';
+import ChartBand from './ChartBand.vue';
+import ChartEnergy from './ChartEnergy.vue';
+import ChartWifi from './ChartWifi.vue';
 import config from '../config';
 
 export default {
   name: 'ChartDisplay',
   components: {
-    Chart,
+    ChartBand, ChartEnergy, ChartWifi,
   },
   data() {
     return {

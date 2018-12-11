@@ -5,7 +5,7 @@
         <h1>{{ title }}</h1>
       </div>
       <div class="col-8 col-center">
-        <svg>
+        <svg id="svgb">
           <svg:style>
             path {
               fill: none;
@@ -25,11 +25,11 @@
 <script>
 import * as d3 from 'd3';
 
-let _a_data;
-let _a_x;
-let _a_y;
-let _a_createPath;
-let _a_svg;
+let _b_data;
+let _b_x;
+let _b_y;
+let _b_createPath;
+let _b_svg;
 
 export default {
   name: 'Chart',
@@ -54,17 +54,17 @@ export default {
   },
   mounted() {
     const random = d3.randomNormal(50, 20);
-    _a_data = Array.from({ length: 37 }, () => random()).concat(this.current_value);
-    _a_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
-    _a_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
+    _b_data = Array.from({ length: 39 }, () => random()).concat(this.current_value);
+    _b_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
+    _b_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
 
-    _a_createPath = d3.line()
-      .x((d, i) => _a_x(i))
-      .y(d => _a_y(d));
-    _a_svg = d3.select('svg')
+    _b_createPath = d3.line()
+      .x((d, i) => _b_x(i))
+      .y(d => _b_y(d));
+    _b_svg = d3.select('#svgb')
       .append('g').append('path');
 
-    _a_svg.datum(_a_data)
+    _b_svg.datum(_b_data)
       .transition()
       .duration(1000)
       .ease(d3.easeLinear)
@@ -73,20 +73,20 @@ export default {
   methods: {
     tick() {
       // Push a new data point onto the back.
-      _a_data.push(this.current_value);
+      _b_data.push(this.current_value);
 
       // Redraw the line.
-      _a_svg.attr('d', _a_createPath)
+      _b_svg.attr('d', _b_createPath)
         .attr('transform', null);
 
       // Slide it to the left.
-      d3.active(_a_svg.node())
-        .attr('transform', `translate(${_a_x(-1)},0)`)
+      d3.active(_b_svg.node())
+        .attr('transform', `translate(${_b_x(-1)},0)`)
         .transition()
         .on('start', this.tick);
 
       // Pop the old data point off the front.
-      _a_data.shift();
+      _b_data.shift();
     },
   },
 };
