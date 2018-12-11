@@ -23,7 +23,7 @@
         <ChartWifi
           title="WIFI CLIENT"
           :current_value="server.wifi"
-          unit=""
+          unit="CLIENTS"
         ></ChartWifi>
       </div>
     </div>
@@ -74,9 +74,8 @@ export default {
 #ChartDisplay {
   border: 4px solid #26dafd;
   background-color: rgba(0, 72, 110, 0.4);
-  border-radius: 10px;
 
-  margin-top: 90px;
+  margin-top: 80px;
   margin-bottom: 0px;
   height: 378px;
   flex-direction: column;
