@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  baseUrl: '',
+  baseUrl: '/assets/dist/',
   configureWebpack: {
     resolve: {
       extensions: ['.js'],
