@@ -11,7 +11,7 @@
         </div>
         <div class="col-1"></div>
         <div class="col">
-          <TopDisplay text="Day 100 / Hour 00"></TopDisplay>
+          <TopDisplay :text="`Day ${vtime.day} / Hour ${vtime.hour}`"></TopDisplay>
         </div>
       </div>
       <div class="row middle-row">
@@ -46,6 +46,7 @@ import RightDisplay from './components/RightDisplay.vue';
 import ChartDisplay from './components/ChartDisplay.vue';
 import FlashAlert from './components/FlashAlert.vue';
 import Overlay from './components/Overlay.vue';
+import config from './config';
 
 export default {
   name: 'app',
@@ -59,23 +60,30 @@ export default {
   },
   data() {
     return {
-      //
+      vtimeHandle: null,
     };
   },
   created() {
     this.setTeamId('T1');
     this.fetchServerData(this.teamId);
+    this.fetchVTime().then(() => {
+      this.vtimeHandle = setInterval(() => {
+        this.fetchVTime();
+      }, config.fetchVTimeInterval);
+    });
   },
   methods: {
     ...mapActions([
       'setTeamId',
       'fetchServerData',
+      'fetchVTime',
     ]),
   },
   computed: {
     ...mapState([
       'server',
       'teamId',
+      'vtime',
     ]),
   },
 };
@@ -84,6 +92,7 @@ export default {
 <style>
 body {
   margin: 0px;
+  overflow: hidden;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

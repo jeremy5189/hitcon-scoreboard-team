@@ -64,6 +64,7 @@ export default {
     ]),
     updateChart() {
       //console.log('updateChart', this.server);
+      // API return data in this.server
     },
   },
 };

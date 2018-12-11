@@ -9,6 +9,7 @@ npm install
 ```
 npm run serve
 npm run mock # Start mock server by php at localhost:8003
+npm run mock-vtime # Start mock server by php at localhost:8004
 ```
 
 ### Compiles and minifies for production
