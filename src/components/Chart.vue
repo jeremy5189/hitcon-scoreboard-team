@@ -25,7 +25,6 @@
 <script>
 import * as d3 from 'd3';
 
-let that;
 let data;
 let x;
 let y;
@@ -48,8 +47,12 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      //
+    };
+  },
   mounted() {
-    that = this;
     const random = d3.randomNormal(50, 20);
     data = Array.from({ length: 39 }, () => random()).concat(this.current_value);
     x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
@@ -65,27 +68,28 @@ export default {
       .transition()
       .duration(1000)
       .ease(d3.easeLinear)
-      .on('start', tick);
+      .on('start', this.tick);
+  },
+  methods: {
+    tick() {
+      // Push a new data point onto the back.
+      data.push(this.current_value);
+
+      // Redraw the line.
+      svg.attr('d', createPath)
+        .attr('transform', null);
+
+      // Slide it to the left.
+      d3.active(svg.node())
+        .attr('transform', `translate(${x(-1)},0)`)
+        .transition()
+        .on('start', this.tick);
+
+      // Pop the old data point off the front.
+      data.shift();
+    },
   },
 };
-
-function tick() {
-  // Push a new data point onto the back.
-  data.push(that.current_value);
-
-  // Redraw the line.
-  svg.attr('d', createPath)
-    .attr('transform', null);
-
-  // Slide it to the left.
-  d3.active(svg.node())
-    .attr('transform', `translate(${x(-1)},0)`)
-    .transition()
-    .on('start', tick);
-
-  // Pop the old data point off the front.
-  data.shift();
-}
 </script>
 
 <style scoped>
