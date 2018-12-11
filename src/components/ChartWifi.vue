@@ -97,7 +97,7 @@ export default {
   height: 125px;
 }
 
-#Chart svg {;
+#Chart svg {
   width: 1256px;
   height: 100%;
 }
