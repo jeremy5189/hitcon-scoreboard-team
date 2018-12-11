@@ -43,31 +43,44 @@ export default {
   },
   data() {
     return {
+      domainMap: {
+        'BANDWIDTH': [0, 1000],
+        'ENERGY': [0, 100],
+        'WIFI': [0, 50],
+      },
       stack: [],
-      svg: undefined,
-      main: undefined,
-      path: undefined,
-      x: d3.scaleLinear().domain([0, 100]).range([0, 1256]),
-      y: d3.scaleLinear().domain([-5, 105]).range([125, 0]),
-      createPath: undefined,
+      svg: null,
+      main: null,
+      path: null,
+      x: null,
+      y: null,
+      createPath: null,
     };
   },
   mounted() {
+    this.x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
+    this.y = d3.scaleLinear().domain(this.domainMap[this.title]).range([118, 0]);
+    console.log(this.title, 'domain=', this.domainMap);
     const random = d3.randomNormal(50, 20);
-    this.stack = Array.from({ length: 100 }, () => Math.max(0, Math.min(100, parseInt(random())))).concat(this.current_value);
+
+    this.stack = Array.from(
+      { length: 100 },
+      () => Math.max(0, Math.min(100, parseInt(random(), Number))),
+    ).concat(this.current_value);
+
     this.svg = d3.select(this.$refs.graph);
     this.createPath = d3.line().x((d, i) => this.x(i)).y(d => this.y(d));
     this.main = this.svg.append('g');
 
-    this.main.append("defs").append("clipPath")
-      .attr("id", "clip")
-      .append("rect")
-      .attr("width", 1256)
-      .attr("height", 120);
+    this.main.append('defs').append('clipPath')
+      .attr('id', 'clip')
+      .append('rect')
+      .attr('width', 1256)
+      .attr('height', 120);
 
-    this.path = this.main.append("g")
-      .attr("clip-path", "url(#clip)")
-      .append("path");
+    this.path = this.main.append('g')
+      .attr('clip-path', 'url(#clip)')
+      .append('path');
 
     this.path
       .datum(this.stack)
@@ -76,7 +89,7 @@ export default {
       .ease(d3.easeLinear)
       .on('start', this.tick);
 
-    this.path.attr("transform", 'translate(1000, 0)');
+    this.path.attr('transform', 'translate(1000, 0)');
   },
   methods: {
     tick() {
@@ -92,6 +105,7 @@ export default {
         .attr('transform', `translate(${this.x(-1)}, 0)`)
         .transition()
         .on('start', this.tick);
+
       // Pop the old data point off the front.
       this.stack.shift();
     },
@@ -106,8 +120,9 @@ export default {
 
 #Chart svg {
   width: 1256px;
-  height: 120px;
-  margin-top: 2px;
+  height: 118px;
+  padding-top: 2px;
+  padding-bottom: 5px;
 }
 
 .col-title {

@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: content-type");
 function nrand($mean, $sd){
     $x = mt_rand()/mt_getrandmax();
     $y = mt_rand()/mt_getrandmax();
-    return max(min(100, (int)(sqrt(-2*log($x))*cos(2*pi()*$y)*$sd + $mean)), 0);
+    return (int)(sqrt(-2*log($x))*cos(2*pi()*$y)*$sd + $mean);
 }
 
 $mock = [
