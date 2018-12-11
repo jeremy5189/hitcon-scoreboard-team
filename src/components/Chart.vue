@@ -5,7 +5,7 @@
         <h1>{{ title }}</h1>
       </div>
       <div class="col-8 col-center">
-        <svg>
+        <svg ref="graph">
           <svg:style>
             path {
               fill: none;
@@ -25,12 +25,6 @@
 <script>
 import * as d3 from 'd3';
 
-let _a_data;
-let _a_x;
-let _a_y;
-let _a_createPath;
-let _a_svg;
-
 export default {
   name: 'Chart',
   props: {
@@ -49,44 +43,57 @@ export default {
   },
   data() {
     return {
-      //
+      stack: [],
+      svg: undefined,
+      main: undefined,
+      path: undefined,
+      x: d3.scaleLinear().domain([0, 100]).range([0, 1256]),
+      y: d3.scaleLinear().domain([-5, 105]).range([125, 0]),
+      createPath: undefined,
     };
   },
   mounted() {
     const random = d3.randomNormal(50, 20);
-    _a_data = Array.from({ length: 37 }, () => random()).concat(this.current_value);
-    _a_x = d3.scaleLinear().domain([0, 40]).range([0, 1256]);
-    _a_y = d3.scaleLinear().domain([0, 100]).range([125, 0]);
+    this.stack = Array.from({ length: 100 }, () => Math.max(0, Math.min(100, parseInt(random())))).concat(this.current_value);
+    this.svg = d3.select(this.$refs.graph);
+    this.createPath = d3.line().x((d, i) => this.x(i)).y(d => this.y(d));
+    this.main = this.svg.append('g');
 
-    _a_createPath = d3.line()
-      .x((d, i) => _a_x(i))
-      .y(d => _a_y(d));
-    _a_svg = d3.select('svg')
-      .append('g').append('path');
+    this.main.append("defs").append("clipPath")
+      .attr("id", "clip")
+      .append("rect")
+      .attr("width", 1256)
+      .attr("height", 120);
 
-    _a_svg.datum(_a_data)
+    this.path = this.main.append("g")
+      .attr("clip-path", "url(#clip)")
+      .append("path");
+
+    this.path
+      .datum(this.stack)
       .transition()
       .duration(1000)
       .ease(d3.easeLinear)
       .on('start', this.tick);
+
+    this.path.attr("transform", 'translate(1000, 0)');
   },
   methods: {
     tick() {
       // Push a new data point onto the back.
-      _a_data.push(this.current_value);
+      this.stack.push(this.current_value);
 
       // Redraw the line.
-      _a_svg.attr('d', _a_createPath)
+      this.path.attr('d', this.createPath)
         .attr('transform', null);
 
       // Slide it to the left.
-      d3.active(_a_svg.node())
-        .attr('transform', `translate(${_a_x(-1)},0)`)
+      d3.active(this.path.node())
+        .attr('transform', `translate(${this.x(-1)}, 0)`)
         .transition()
         .on('start', this.tick);
-
       // Pop the old data point off the front.
-      _a_data.shift();
+      this.stack.shift();
     },
   },
 };
@@ -99,7 +106,8 @@ export default {
 
 #Chart svg {
   width: 1256px;
-  height: 100%;
+  height: 120px;
+  margin-top: 2px;
 }
 
 .col-title {

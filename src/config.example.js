@@ -3,6 +3,6 @@ export default {
   baseURLVTime: 'http://localhost:8004',
   teamPath: '/team',
   vtimePath: '/vtime',
-  fetchInterval: 1000 * 5,
-  fetchVTimeInterval: 1000,
+  fetchInterval: 1000,
+  fetchVTimeInterval: 1000000,
 };
