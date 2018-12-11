@@ -1,7 +1,7 @@
 <template>
   <div id="LeftDisplay">
     <span>
-      <h3>SERVICE: Web</h3>
+      <h3>SERVICE: WEB</h3>
       <h1 :class="displayBoolean(server.alive_web)">
         {{ displayBoolean(server.alive_web) }}
       </h1>
