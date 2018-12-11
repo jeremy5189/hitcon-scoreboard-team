@@ -43,8 +43,8 @@ export default {
   },
   computed: {
     displayValue() {
-      return (this.current_value *
-        this.filterParamMap[this.title].ratio).toFixed(this.filterParamMap[this.title].toFixed);
+      return (this.current_value * this.filterParamMap[this.title].ratio)
+        .toFixed(this.filterParamMap[this.title].toFixed);
     },
   },
   data() {
@@ -57,15 +57,15 @@ export default {
       filterParamMap: {
         BANDWIDTH: {
           ratio: 1,
-          toFixed: 0
+          toFixed: 0,
         },
         ENERGY: {
           ratio: 0.1,
-          toFixed: 1
+          toFixed: 1,
         },
         'WIFI CLIENT': {
           ratio: 1,
-          toFixed: 0
+          toFixed: 0,
         },
       },
       stack: [],
