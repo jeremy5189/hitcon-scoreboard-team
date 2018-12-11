@@ -16,7 +16,7 @@
         </svg>
       </div>
       <div class="col-2 col-title">
-        <h1>{{ current_value }} {{ unit }}</h1>
+        <h1>{{ displayValue }} {{ unit }}</h1>
       </div>
     </div>
   </div>
@@ -41,12 +41,32 @@ export default {
       default: '',
     },
   },
+  computed: {
+    displayValue() {
+      return (this.current_value *
+        this.filterParamMap[this.title].ratio).toFixed(this.filterParamMap[this.title].toFixed);
+    },
+  },
   data() {
     return {
       domainMap: {
-        'BANDWIDTH': [0, 1000],
-        'ENERGY': [0, 100],
-        'WIFI': [0, 50],
+        BANDWIDTH: [0, 1000],
+        ENERGY: [0, 100],
+        'WIFI CLIENT': [0, 50],
+      },
+      filterParamMap: {
+        BANDWIDTH: {
+          ratio: 1,
+          toFixed: 0
+        },
+        ENERGY: {
+          ratio: 0.1,
+          toFixed: 1
+        },
+        'WIFI CLIENT': {
+          ratio: 1,
+          toFixed: 0
+        },
       },
       stack: [],
       svg: null,
@@ -59,14 +79,17 @@ export default {
   },
   mounted() {
     this.x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-    this.y = d3.scaleLinear().domain(this.domainMap[this.title]).range([118, 0]);
+    this.y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
     console.log(this.title, 'domain=', this.domainMap);
-    const random = d3.randomNormal(50, 20);
+    const random = d3.randomNormal(
+      this.domainMap[this.title][1] / 2,
+      this.domainMap[this.title][1] / 2,
+    );
 
     this.stack = Array.from(
       { length: 100 },
-      () => Math.max(0, Math.min(100, parseInt(random(), Number))),
-    ).concat(this.current_value);
+      () => Math.max(0, Math.min(this.domainMap[this.title][1], parseInt(random(), Number))),
+    ).concat(this.displayValue);
 
     this.svg = d3.select(this.$refs.graph);
     this.createPath = d3.line().x((d, i) => this.x(i)).y(d => this.y(d));
@@ -76,7 +99,7 @@ export default {
       .attr('id', 'clip')
       .append('rect')
       .attr('width', 1256)
-      .attr('height', 120);
+      .attr('height', 115);
 
     this.path = this.main.append('g')
       .attr('clip-path', 'url(#clip)')
@@ -94,7 +117,7 @@ export default {
   methods: {
     tick() {
       // Push a new data point onto the back.
-      this.stack.push(this.current_value);
+      this.stack.push(this.displayValue);
 
       // Redraw the line.
       this.path.attr('d', this.createPath)
@@ -117,12 +140,14 @@ export default {
 #Chart {
   height: 125px;
 }
-
+.col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #Chart svg {
   width: 1256px;
-  height: 118px;
-  padding-top: 2px;
-  padding-bottom: 5px;
+  height: 115px;
 }
 
 .col-title {
