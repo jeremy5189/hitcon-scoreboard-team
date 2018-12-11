@@ -49,7 +49,7 @@ export default {
   },
   created() {
     this.handle = setInterval(() => {
-      this.fetchServerData().then(() => {
+      this.fetchServerData(this.teamId).then(() => {
         this.updateChart();
       });
     }, config.fetchInterval);
@@ -57,6 +57,7 @@ export default {
   computed: {
     ...mapState([
       'server',
+      'teamId',
     ]),
   },
   methods: {
