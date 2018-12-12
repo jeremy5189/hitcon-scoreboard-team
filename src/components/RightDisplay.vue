@@ -73,6 +73,6 @@ h1.DOWN {
 }
 h1.UP {
   color: rgba(118, 191, 138, 0.8);
-  text-shadow: 0 0 1.5px rgba(118, 191, 138, 0.8); 
+  text-shadow: 0 0 1.5px rgba(118, 191, 138, 0.8);
 }
 </style>

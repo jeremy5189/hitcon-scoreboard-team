@@ -29,15 +29,15 @@ export default {
       'server',
     ]),
     ddosLevel() {
+      let level;
       if (this.server.ddos <= 33) {
-        return 'LOW';
+        level = 'LOW';
+      } else if (this.server.ddos > 33 && this.server.ddos <= 66) {
+        level = 'MEDIUM';
+      } else {
+        level = 'HIGH';
       }
-      else if (this.server.ddos > 33 && this.server.ddos <= 66) {
-        return 'MEDIUM';
-      }
-      else {
-        return 'HIGH';
-      }
+      return level;
     },
   },
 };
