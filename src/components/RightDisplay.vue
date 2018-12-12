@@ -1,5 +1,5 @@
 <template>
-  <div id="LeftDisplay">
+  <div id="RightDisplay">
     <span>
       <h3>SERVICE: WEB</h3>
       <h1 :class="displayBoolean(server.alive_web)">
@@ -25,7 +25,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'LeftDisplay',
+  name: 'RightDisplay',
   props: {
     text: {
       type: String,
@@ -46,10 +46,11 @@ export default {
 </script>
 
 <style scoped>
-#LeftDisplay {
+#RightDisplay {
   border: 4px solid #26dafd;
   background-color: rgba(0, 72, 110, 0.4);
   border-radius: 10px;
+  box-shadow: 0 0 8px #97d0de;
 
   display: flex;
   justify-content: space-around;

@@ -167,6 +167,7 @@ export default {
 
 .col-title h3 {
   color: #a1ecfb;
+  font-size: 36px;
   align-self: center;
   font-weight: 400;
   text-align: center;

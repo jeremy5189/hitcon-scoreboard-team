@@ -78,6 +78,7 @@ export default {
   margin-bottom: 0px;
   height: 378px;
   flex-direction: column;
+  box-shadow: 0 0 8px #97d0de;
 }
 h1 {
   color: #a1ecfb;

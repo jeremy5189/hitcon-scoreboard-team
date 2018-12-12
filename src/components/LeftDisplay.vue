@@ -48,6 +48,7 @@ export default {
   border: 4px solid #26dafd;
   background-color: rgba(0, 72, 110, 0.4);
   border-radius: 10px;
+  box-shadow: 0 0 8px #97d0de;
 
   display: flex;
   justify-content: space-around;
@@ -57,6 +58,7 @@ export default {
   margin-right: 25px;
   flex-direction: column;
   padding: 20px 0px;
+  box-shadow: 0 0 10px #97d0de;
 }
 span {
   color: #a1ecfb;

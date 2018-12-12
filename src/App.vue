@@ -122,6 +122,7 @@ body {
   height: 1080px;
   background-image: url('./assets/stars.jpg');
   overflow: hidden;
+  text-shadow: 0 0 3px #97d0de;
 }
 .middle-row {
   margin-top: 90px;
@@ -135,6 +136,9 @@ body {
   padding: 0px 0px;
 }
 h1 {
-  font-size: 36px;
+  font-size: 40px;
+}
+#LeftDisplay {
+  box-shadow: 0 0 10px #97d0de;
 }
 </style>
