@@ -68,5 +68,6 @@ span {
 }
 h1.warning {
   color: rgba(212, 5, 1, 0.8);
+  text-shadow: 0 0 1.5px rgba(212, 5, 1, 0.8);
 }
 </style>

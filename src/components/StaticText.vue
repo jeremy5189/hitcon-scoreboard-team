@@ -1,13 +1,32 @@
 <template>
   <div id="StaticText">
     <img src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
-    <h2>SSID: HITCON-DEFENCE / PW: PASSWORD</h2>
+    <h2>SSID: {{ ssidMap[teamId] }} // PW: PASSWORD</h2>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'StaticText',
+  computed: {
+    ...mapState([
+      'teamId',
+    ]),
+  },
+  data() {
+    return {
+      ssidMap: {
+        1: 'HITCON-DEFENCE',
+        2: 'HITCON-DEFENCE',
+        3: 'HITCON-DEFENCE',
+        4: 'HITCON-DEFENCE',
+        5: 'HITCON-DEFENCE',
+        6: 'HITCON-DEFENCE',
+      },
+    };
+  },
 };
 </script>
 
