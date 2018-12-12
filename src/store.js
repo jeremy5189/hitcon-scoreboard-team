@@ -25,6 +25,7 @@ export default new Vuex.Store({
       hour: 0,
     },
     teamId: 'T1',
+    apiErrorTime: 0,
   },
   mutations: {
     SET_LOCAL_DATA: (state, server) => {
@@ -36,27 +37,40 @@ export default new Vuex.Store({
     SET_VTIME: (state, vtime) => {
       state.vtime = vtime;
     },
+    INCREASE_API_ERROR_TIME: (state) => {
+      state.apiErrorTime++;
+    },
+    RESET_API_ERROR_TIME: (state) => {
+      state.apiErrorTime = 0;
+    },
   },
   actions: {
     setTeamId({ commit }, teamId) {
       commit('SET_TEAM_ID', teamId);
     },
     fetchServerData({ commit }, teamId) {
-      axios.post(`${config.baseURL}${config.teamPath}`, {
+      axios.post(`${config.baseURL}${config.teamPath}?team_id=${teamId}`, {
         team_id: teamId,
       }).then((resp) => {
         resp.data.alive_level = resp.data.alive_web
           + resp.data.alive_erp
           + resp.data.alive_sslvpn;
         commit('SET_LOCAL_DATA', resp.data);
+        commit('RESET_API_ERROR_TIME');
         return Promise.resolve(resp.data);
-      }).catch(err => Promise.reject(err));
+      }).catch((err) => {
+        commit('INCREASE_API_ERROR_TIME');
+        return Promise.reject(err);
+      });
     },
     fetchVTime({ commit }) {
       axios.get(`${config.baseURLVTime}${config.vtimePath}`).then((resp) => {
         commit('SET_VTIME', resp.data);
         return Promise.resolve(resp.data);
-      }).catch(err => Promise.reject(err));
+      }).catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
     },
   },
 });

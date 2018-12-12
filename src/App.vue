@@ -77,6 +77,11 @@ export default {
       }, config.fetchVTimeInterval);
     });
   },
+  watch: {
+    apiErrorTime: function(val) {
+      console.log('apiErrorTime', val);
+    },
+  },
   methods: {
     ...mapActions([
       'setTeamId',
@@ -89,6 +94,7 @@ export default {
       'server',
       'teamId',
       'vtime',
+      'apiErrorTime',
     ]),
   },
 };
