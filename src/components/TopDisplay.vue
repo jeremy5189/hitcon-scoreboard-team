@@ -1,6 +1,6 @@
 <template>
   <div id="TopDisplay">
-    <h1>{{ text }}</h1>
+    <h1 :class="type === 'teamname' ? 'chinese_font' : ''">{{ text }}</h1>
   </div>
 </template>
 
@@ -11,6 +11,10 @@ export default {
     text: {
       type: String,
       default: '-',
+    },
+    type: {
+      type: String,
+      default: 'other',
     },
   },
 };
@@ -36,5 +40,8 @@ h1 {
   align-self: flex-end;
   font-weight: 500;
   margin-bottom: 15px;
+}
+.chinese_font {
+  font-family: "LiHei Pro Medium", SimHei, "Microsoft JhengHei";
 }
 </style>

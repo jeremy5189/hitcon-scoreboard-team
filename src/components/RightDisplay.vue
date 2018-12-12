@@ -56,7 +56,7 @@ export default {
   align-content: center;
   height: 450px;
   margin-right: -25px;
-  margin-left: 150px;
+  margin-left: 25px;
   flex-direction: column;
   padding: 20px 0px;
 }

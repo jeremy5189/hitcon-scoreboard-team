@@ -7,7 +7,7 @@
         </div>
         <div class="col-1"></div>
         <div class="col-4">
-          <TopDisplay :text="server.teamname"></TopDisplay>
+          <TopDisplay :text="server.teamname" type="teamname"></TopDisplay>
         </div>
         <div class="col-1"></div>
         <div class="col">
@@ -18,7 +18,7 @@
         <div class="col">
           <LeftDisplay></LeftDisplay>
         </div>
-        <div class="col-6">
+        <div class="col-7 col-center">
           <FlashAlert
             v-if="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
           ></FlashAlert>
@@ -125,7 +125,7 @@ body {
 .middle-row {
   margin-top: 90px;
 }
-.middle-row .col-6 {
+.middle-row .col-center {
   display: flex;
   justify-content: center;
   align-items: center;

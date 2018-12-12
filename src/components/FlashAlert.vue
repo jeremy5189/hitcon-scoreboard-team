@@ -34,16 +34,18 @@ export default {
 
   display: flex;
   justify-content: center;
-  align-content: center;
-  width: 850px;
-  height: 90px;
+  align-items: center;
+  height: 100px;
   flex-direction: column;
+  padding: 5px 5px 0px 5px;
 }
 h1 {
   color: #a1ecfb;
   align-self: center;
   font-weight: 500;
-  margin-bottom: 0px;
+  margin: 0px 30px 0px 30px;
+  font-size: 45px;
+  line-height: 45px;
 }
 /* Flash class and keyframe animation */
 .flashit{

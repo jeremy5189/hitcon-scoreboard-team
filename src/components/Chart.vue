@@ -62,7 +62,7 @@ export default {
         },
         ENERGY: {
           ratio: 0.1,
-          toFixed: 1,
+          toFixed: 2,
         },
         'WIFI CLIENT': {
           ratio: 1,
@@ -171,7 +171,7 @@ export default {
   font-weight: 400;
   text-align: center;
   margin-bottom: 0px;
-  margin-left: 5px;
+  margin-left: 7px;
 }
 
 .col-center {
