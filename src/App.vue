@@ -78,8 +78,11 @@ export default {
     });
   },
   watch: {
-    apiErrorTime: (val) => {
-      console.log('apiErrorTime', val);
+    apiErrorCount: (val) => {
+      console.log('apiErrorCount', val);
+      if (val >= 3) {
+        window.location.href = config.sponsorURL;
+      }
     },
   },
   methods: {
@@ -94,7 +97,7 @@ export default {
       'server',
       'teamId',
       'vtime',
-      'apiErrorTime',
+      'apiErrorCount',
     ]),
   },
 };

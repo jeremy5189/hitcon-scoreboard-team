@@ -25,7 +25,7 @@ export default new Vuex.Store({
       hour: 0,
     },
     teamId: 'T1',
-    apiErrorTime: 0,
+    apiErrorCount: 0,
   },
   mutations: {
     SET_LOCAL_DATA: (state, server) => {
@@ -38,10 +38,10 @@ export default new Vuex.Store({
       state.vtime = vtime;
     },
     INCREASE_API_ERROR_TIME: (state) => {
-      state.apiErrorTime += 1;
+      state.apiErrorCount += 1;
     },
     RESET_API_ERROR_TIME: (state) => {
-      state.apiErrorTime = 0;
+      state.apiErrorCount = 0;
     },
   },
   actions: {
