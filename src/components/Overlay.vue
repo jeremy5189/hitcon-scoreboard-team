@@ -25,13 +25,13 @@ export default {
   animation: flash linear 2s infinite;
 }
 @-webkit-keyframes flash {
-  0% { opacity: .2; }
+  0% { opacity: .15; }
   50% { opacity: 0; }
-  100% { opacity: .2; }
+  100% { opacity: .15; }
 }
 @keyframes flash {
-  0% { opacity: .2; }
+  0% { opacity: .15; }
   50% { opacity: 0; }
-  100% { opacity: .2; }
+  100% { opacity: .15; }
 }
 </style>

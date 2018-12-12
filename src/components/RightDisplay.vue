@@ -69,4 +69,7 @@ span {
 h1.DOWN {
   color: rgba(212, 5, 1, 0.8);
 }
+h1.UP {
+  color: rgba(118, 191, 138, 0.8);
+}
 </style>
