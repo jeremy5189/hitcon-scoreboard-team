@@ -1,7 +1,7 @@
 <template>
   <div id="ChartDisplay">
     <div class="row">
-      <div class="col">
+      <div class="col col-border">
         <Chart
           title="BANDWIDTH"
           :current_value="server.bandwidth"
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col col-border">
         <Chart
           title="ENERGY"
           :current_value="server.energy"
@@ -74,11 +74,10 @@ export default {
   border: 4px solid #26dafd;
   background-color: rgba(0, 72, 110, 0.4);
 
-  margin-top: 80px;
+  margin-top: 81px;
   margin-bottom: 0px;
-  height: 378px;
+  height: 382px;
   flex-direction: column;
-  box-shadow: 0 0 8px #97d0de;
 }
 h1 {
   color: #a1ecfb;
@@ -87,7 +86,9 @@ h1 {
   margin-bottom: 15px;
 }
 .col {
-  border-bottom: 2px solid #a1ecfb;
   margin: 0 18px;
+}
+.col-border {
+  border-bottom: 2px solid #a1ecfb;
 }
 </style>

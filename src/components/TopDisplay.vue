@@ -32,7 +32,7 @@ export default {
   justify-content: center;
   align-content: center;
   height: 90px;
-  margin-top: -20px;
+  margin-top: -15px;
   margin-left: 10px;
   margin-right: 10px;
 }
