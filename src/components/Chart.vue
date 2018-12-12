@@ -16,7 +16,8 @@
         </svg>
       </div>
       <div class="col-2 col-title">
-        <h1>{{ displayValue }} {{ unit }}</h1>
+        <h1>{{ displayValue }}</h1>
+        <h3>{{ unit }}</h3>
       </div>
     </div>
   </div>
@@ -162,6 +163,15 @@ export default {
   font-weight: 500;
   text-align: center;
   margin-bottom: 0px;
+}
+
+.col-title h3 {
+  color: #a1ecfb;
+  align-self: center;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-left: 5px;
 }
 
 .col-center {

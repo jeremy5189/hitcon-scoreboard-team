@@ -1,7 +1,7 @@
 <template>
   <div id="StaticText">
     <img src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
-    <h1>SSID: HITCON-DEFENCE / PW: PASSWORD</h1>
+    <h2>SSID: HITCON-DEFENCE / PW: PASSWORD</h2>
   </div>
 </template>
 
@@ -20,12 +20,11 @@ export default {
   height: 90px;
   flex-direction: column;
 }
-h1 {
+h2 {
   color: rgba(161, 236, 251, 0.7);
   align-self: center;
   font-weight: 500;
   margin-bottom: 0px;
-  font-size: 32px;
 }
 img {
   width: 200px;

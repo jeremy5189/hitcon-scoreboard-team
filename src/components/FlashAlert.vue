@@ -44,7 +44,6 @@ h1 {
   align-self: center;
   font-weight: 500;
   margin-bottom: 0px;
-  font-size: 40px;
 }
 /* Flash class and keyframe animation */
 .flashit{

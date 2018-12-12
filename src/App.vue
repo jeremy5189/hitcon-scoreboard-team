@@ -105,8 +105,8 @@ export default {
 
 <style>
 @font-face {
-  font-family: Orbitron Black;
-  src: url(./assets/Orbitron Black.otf);
+  font-family: 'Orbitron Black';
+  src: url('./assets/Orbitron Black.otf');
 }
 
 body {
@@ -132,5 +132,8 @@ body {
 }
 .bottom-row .col {
   padding: 0px 0px;
+}
+h1 {
+  font-size: 36px;
 }
 </style>
