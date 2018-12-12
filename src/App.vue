@@ -105,8 +105,8 @@ export default {
 
 <style>
 @font-face {
-  font-family: trnfl;
-  src: url(./assets/trnfl.otf);
+  font-family: Orbitron Bold;
+  src: url(./assets/Orbitron Bold.otf);
 }
 
 body {
@@ -114,7 +114,7 @@ body {
   overflow: hidden;
 }
 #app {
-  font-family: trnfl, 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
+  font-family: Orbitron Bold, 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1920px;
