@@ -105,8 +105,8 @@ export default {
 
 <style>
 @font-face {
-  font-family: Orbitron Bold;
-  src: url(./assets/Orbitron Bold.otf);
+  font-family: Orbitron Black;
+  src: url(./assets/Orbitron Black.otf);
 }
 
 body {
@@ -114,7 +114,7 @@ body {
   overflow: hidden;
 }
 #app {
-  font-family: Orbitron Bold, 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
+  font-family: 'Orbitron Black', 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1920px;
