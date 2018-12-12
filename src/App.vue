@@ -112,6 +112,7 @@ export default {
 body {
   margin: 0px;
   overflow: hidden;
+  cursor: none;
 }
 #app {
   font-family: 'Orbitron Black', 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;

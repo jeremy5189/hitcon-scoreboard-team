@@ -42,7 +42,7 @@ h1 {
   margin-bottom: 15px;
 }
 .chinese_font {
-  font-family: "LiHei Pro Medium", SimHei, "Microsoft JhengHei";
+  font-family: Helvetica, SimHei, "Microsoft JhengHei";
   font-weight: 700;
 }
 </style>
