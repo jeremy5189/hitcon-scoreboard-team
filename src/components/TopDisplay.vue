@@ -43,5 +43,6 @@ h1 {
 }
 .chinese_font {
   font-family: "LiHei Pro Medium", SimHei, "Microsoft JhengHei";
+  font-weight: 700;
 }
 </style>
