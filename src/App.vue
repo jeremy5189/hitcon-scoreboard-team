@@ -104,12 +104,17 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: trnfl;
+  src: url(./assets/trnfl.otf);
+}
+
 body {
   margin: 0px;
   overflow: hidden;
 }
 #app {
-  font-family: 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
+  font-family: trnfl, 'Avenir', Helvetica, 'Microsoft JhengHei', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1920px;
