@@ -23,7 +23,7 @@
         <Chart
           title="WIFI CLIENT"
           :current_value="server.wifi"
-          unit="CLIENTS"
+          unit="DEVICES"
         ></Chart>
       </div>
     </div>

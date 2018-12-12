@@ -41,6 +41,7 @@ h1 {
   align-self: flex-end;
   font-weight: 500;
   margin-bottom: 15px;
+  font-size: 38px;
 }
 .chinese_font {
   font-family: Helvetica, SimHei, "Microsoft JhengHei";

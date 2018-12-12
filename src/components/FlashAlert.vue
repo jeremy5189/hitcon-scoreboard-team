@@ -37,7 +37,7 @@ export default {
   align-items: center;
   height: 100px;
   flex-direction: column;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 10px 5px 10px;
 }
 h1 {
   color: #a1ecfb;

@@ -180,4 +180,7 @@ export default {
   border-right: 2px solid #a1ecfb;
   height: 125px;
 }
+h1 {
+  font-size: 36px;
+}
 </style>
