@@ -78,7 +78,7 @@ export default {
     });
   },
   watch: {
-    apiErrorTime: function(val) {
+    apiErrorTime: (val) => {
       console.log('apiErrorTime', val);
     },
   },

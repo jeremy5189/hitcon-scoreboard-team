@@ -38,7 +38,7 @@ export default new Vuex.Store({
       state.vtime = vtime;
     },
     INCREASE_API_ERROR_TIME: (state) => {
-      state.apiErrorTime++;
+      state.apiErrorTime += 1;
     },
     RESET_API_ERROR_TIME: (state) => {
       state.apiErrorTime = 0;
