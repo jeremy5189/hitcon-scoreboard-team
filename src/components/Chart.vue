@@ -88,8 +88,8 @@ export default {
     };
   },
   mounted() {
-    let x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-    let y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
+    const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
+    const y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
     console.log(this.title, 'domain=', this.domainMap[this.title]);
     const random = d3.randomNormal(
       this.domainMap[this.title][1] / 3,
@@ -126,9 +126,10 @@ export default {
   },
   methods: {
     calcDomain() {
-      let lMin = Math.min(...this.stack), lMax = Math.max(...this.stack);
-      let span = lMax - lMin;
-      return [lMin-span*0.1, lMax+span*0.1];
+      const lMin = Math.min(...this.stack);
+      const lMax = Math.max(...this.stack);
+      const span = lMax - lMin;
+      return [lMin - span * 0.1, lMax + span * 0.1];
     },
     displayValue() {
       let append = 0;
@@ -136,7 +137,8 @@ export default {
       if (this.filterParamMap[this.title].append) {
         append = Math.floor(Math.random() * 50) / (10 ** this.filterParamMap[this.title].toFixed);
       }
-      this.displayed_value = (this.server[this.col] * this.filterParamMap[this.title].ratio + append)
+      this.displayed_value = (this.server[this.col]
+       * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
       return this.displayed_value;
     },
@@ -144,8 +146,8 @@ export default {
       // Push a new data point onto the back.
       this.stack.push(this.displayValue());
 
-      let x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-      let y = d3.scaleLinear().domain(this.calcDomain())
+      const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
+      const y = d3.scaleLinear().domain(this.calcDomain())
         .range([115, 0]);
       this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
 
