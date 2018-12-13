@@ -44,7 +44,11 @@ export default {
   },
   computed: {
     displayValue() {
-      return (this.current_value * this.filterParamMap[this.title].ratio)
+      let append = 0;
+      if (this.filterParamMap[this.title].append) {
+        append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
+      }
+      return (this.current_value * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
     },
   },
@@ -59,14 +63,17 @@ export default {
         BANDWIDTH: {
           ratio: 0.000001, // bps to Mbps
           toFixed: 1,
+          append: false,
         },
         ENERGY: {
           ratio: 0.01,
-          toFixed: 2,
+          toFixed: 3,
+          append: true, // random a
         },
         'WIFI CLIENT': {
           ratio: 1,
           toFixed: 0,
+          append: false,
         },
       },
       stack: [],
