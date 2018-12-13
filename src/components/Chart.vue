@@ -59,13 +59,13 @@ export default {
   data() {
     return {
       domainMap: {
-        BANDWIDTH: [0, 100],
+        BANDWIDTH: [0, 100000],
         ENERGY: [0, 1.5],
         'WIFI CLIENT': [0, 50],
       },
       filterParamMap: {
         BANDWIDTH: {
-          ratio: 0.000001, // bps to Mbps
+          ratio: 0.001, // bps to Mbps
           toFixed: 1,
           append: false,
         },

@@ -6,7 +6,7 @@
           title="BANDWIDTH"
           :current_value="server.bandwidth"
           col="bandwidth"
-          unit="Mbps"
+          unit="Kbps"
         ></Chart>
       </div>
     </div>
