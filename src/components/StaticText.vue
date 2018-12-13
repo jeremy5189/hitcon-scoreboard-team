@@ -1,7 +1,17 @@
 <template>
   <div id="StaticText">
-    <img src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
-    <h2>SSID: {{ ssidMap[teamId][0] }} // PW: {{ ssidMap[teamId][1] }}</h2>
+    <img id="logo" src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
+    <div class="row">
+      <div class="col">
+        <img src="../assets/wifi.svg" id="wifi">
+      </div>
+      <div class="col flex">
+        <span>
+          <h2>{{ ssidMap[teamId][0] }}</h2>
+          <h2>{{ ssidMap[teamId][1] }}</h2>
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,11 +54,25 @@ h2 {
   align-self: center;
   font-weight: 500;
   margin-bottom: 0px;
+  margin-top: 8px;
+  letter-spacing: 1px;
 }
-img {
-  width: 200px;
+span h2:first-child {
+  margin-top: 10px;
+}
+#logo {
+  width: 250px;
   opacity: 0.7;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   filter: drop-shadow(0 0 5px #eee);
+}
+#wifi {
+  opacity: 0.7;
+  width: 90px;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
