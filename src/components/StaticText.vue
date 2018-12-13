@@ -1,7 +1,7 @@
 <template>
   <div id="StaticText">
     <img src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
-    <h2>SSID: {{ ssidMap[teamId] }} // PW: PASSWORD</h2>
+    <h2>SSID: {{ ssidMap[teamId][0] }} // PW: {{ ssidMap[teamId][1] }}</h2>
   </div>
 </template>
 
@@ -18,12 +18,12 @@ export default {
   data() {
     return {
       ssidMap: {
-        1: 'HITCON-DEFENCE',
-        2: 'HITCON-DEFENCE',
-        3: 'HITCON-DEFENCE',
-        4: 'HITCON-DEFENCE',
-        5: 'HITCON-DEFENCE',
-        6: 'HITCON-DEFENCE',
+        1: ['Team1-Guest', '023939889'],
+        2: ['Team2-Guest', '028825252'],
+        3: ['Team3-Guest', '024121234'],
+        4: ['Team4-Guest', '024128000'],
+        5: ['Team5-Guest', '0800080365'],
+        6: ['Team6-Guest', '40666888'],
       },
     };
   },
