@@ -11,7 +11,9 @@
         </div>
         <div class="col-1"></div>
         <div class="col">
-          <TopDisplay :text="`Day ${vtime.day} / Hour ${vtime.hour}`"></TopDisplay>
+          <TopDisplay
+            :text="`Day ${vtime.day} / Hour ${vtime.hour < 10 ? `0${vtime.hour}` : vtime.hour}`"
+          ></TopDisplay>
         </div>
       </div>
       <div class="row middle-row">
