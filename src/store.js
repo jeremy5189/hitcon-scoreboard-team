@@ -64,14 +64,9 @@ export default new Vuex.Store({
       console.log('currentBandwidth', state.server.bandwidth);
       state.server.bandwidth -= state.prevBandwidth;
       console.log('minus', state.server.bandwidth);
-      if (state.server.bandwidth <= 0) {
-        // skip
-        state.server.bandwidth = prevBandwidth;
-      } else {
-        state.server.bandwidth /= (config.fetchInterval / 1000);
-        console.log('result', state.server.bandwidth);
-        state.prevBandwidth = prevBandwidth;
-      }
+      state.server.bandwidth /= (config.fetchInterval / 2 / 1000);
+      console.log('result', state.server.bandwidth);
+      state.prevBandwidth = prevBandwidth;
     },
   },
   actions: {

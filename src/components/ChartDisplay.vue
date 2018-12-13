@@ -6,7 +6,8 @@
           title="BANDWIDTH"
           :current_value="server.bandwidth"
           col="bandwidth"
-          unit="Kbps"
+          unit="Mbps"
+          ref="bandwidth_chart"
         ></Chart>
       </div>
     </div>
@@ -17,6 +18,7 @@
           :current_value="server.energy"
           col="energy"
           unit="kW"
+          ref="energy_chart"
         ></Chart>
       </div>
     </div>
@@ -27,6 +29,7 @@
           :current_value="server.wifi"
           col="wifi"
           unit="DEVICES"
+          ref="wifi_chart"
         ></Chart>
       </div>
     </div>
@@ -67,6 +70,9 @@ export default {
     ]),
     updateChart() {
       // API return data in this.server
+      this.$refs.bandwidth_chart.updateDisplayedValue();
+      this.$refs.energy_chart.updateDisplayedValue();
+      this.$refs.wifi_chart.updateDisplayedValue();
     },
   },
 };
