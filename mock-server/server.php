@@ -6,6 +6,7 @@ header("Access-Control-Allow-Headers: content-type");
 function nrand($mean, $sd){
     $x = mt_rand()/mt_getrandmax();
     $y = mt_rand()/mt_getrandmax();
+    //return $mean;
     return (int)(sqrt(-2*log($x))*cos(2*pi()*$y)*$sd + $mean);
 }
 
@@ -17,9 +18,9 @@ $mock = [
   'alive_web' => (rand(0, 1) === 1 ? true : false),
   'alive_erp' => (rand(0, 1) === 1 ? true : false),
   'alive_sslvpn' => (rand(0, 1) === 1 ? true : false),
-  'bandwidth' => nrand(500 * 1000000, 100 * 1000000),
-  'energy' => nrand(50, 10),
-  'wifi' => nrand(25, 10)
+  'bandwidth' => nrand(50 * 1000000, 1 * 1000000),
+  'energy' => nrand(50, 2),
+  'wifi' => nrand(15, 2)
 ];
 
 $mock2 = [
