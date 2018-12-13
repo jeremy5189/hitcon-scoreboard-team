@@ -16,7 +16,7 @@
         </svg>
       </div>
       <div class="col-2 col-title">
-        <h1>{{ this.displayed_value  }}</h1>
+        <h1>{{ displayed_value  }}</h1>
         <h3>{{ unit }}</h3>
       </div>
     </div>
@@ -39,10 +39,6 @@ export default {
       default: 'bandwidth',
     },
     current_value: {
-      type: Number,
-      default: 0,
-    },
-    displayed_value: {
       type: Number,
       default: 0,
     },
@@ -85,6 +81,7 @@ export default {
       main: null,
       path: null,
       createPath: null,
+      displayed_value: null,
     };
   },
   mounted() {
