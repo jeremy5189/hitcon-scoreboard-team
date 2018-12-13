@@ -129,7 +129,15 @@ export default {
       const lMin = Math.min(...this.stack);
       const lMax = Math.max(...this.stack);
       const span = lMax - lMin;
-      return [lMin - span * 0.1, lMax + span * 0.1];
+      let go = 0;
+
+      if (span > 0) {
+        go = [lMin - span * 0.1, lMax + span * 0.1];
+      } else {
+        go = [lMin - 1, lMax + 2];
+      }
+
+      return go;
     },
     displayValue() {
       let append = 0;
