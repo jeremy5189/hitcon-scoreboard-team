@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       domainMap: {
-        bandwidth: [0, 20],
+        bandwidth: [0, 10],
         energy: [0, 2],
         wifi: [0, 10],
       },
@@ -91,7 +91,6 @@ export default {
 
     const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
     const y = d3.scaleLinear().domain(this.domainMap[this.col]).range([115, 0]);
-    console.log(this.col, 'domain=', this.domainMap[this.col]);
     /* const random = d3.randomNormal(
       this.domainMap[this.col][1] / 3,
       this.domainMap[this.col][1] / 50,
@@ -138,7 +137,7 @@ export default {
       const lMin = Math.min(...this.stack);
       const lMax = Math.max(...this.stack, this.domainMap[title][1]);
       const span = lMax - lMin;
-      let go = 0;
+      let go = [];
 
       if (span > 0) {
         go = [lMin - span * 0.1, lMax + span * 0.1];
@@ -146,6 +145,7 @@ export default {
         go = [lMin - 1, lMax + 5];
       }
 
+      console.log(this.col, 'domain=', go[0], go[1]);
       return go;
     },
     displayValue(val) {
