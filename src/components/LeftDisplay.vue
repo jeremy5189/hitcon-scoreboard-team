@@ -8,7 +8,7 @@
     </span>
     <span>
       <h3>INCOMING DDOS</h3>
-      <h1>{{ ddosLevel }}</h1>
+      <h1 :class="ddosLevel">{{ ddosLevel }}</h1>
     </span>
   </div>
 </template>
@@ -30,7 +30,9 @@ export default {
     ]),
     ddosLevel() {
       let level;
-      if (this.server.ddos <= 33) {
+      if (this.server.ddos <= 0) {
+        level = '-';
+      } else if (this.server.ddos <= 33) {
         level = 'LOW';
       } else if (this.server.ddos > 33 && this.server.ddos <= 66) {
         level = 'MEDIUM';
@@ -66,8 +68,13 @@ span {
   font-weight: 500;
   text-align: center;
 }
-h1.warning {
+h1.warning,
+h1.HIGH {
   color: rgba(212, 5, 1, 0.8);
   text-shadow: 0 0 1.5px rgba(212, 5, 1, 0.8);
+}
+h1.MEDIUM {
+  color: rgba(118, 191, 138, 0.8);
+  text-shadow: 0 0 1.5px rgba(118, 191, 138, 0.8);
 }
 </style>
