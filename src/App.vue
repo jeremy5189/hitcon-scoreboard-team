@@ -73,11 +73,7 @@ export default {
     this.setTeamId(teamId === null ? '1' : teamId);
     console.log('teamId', teamId);
     this.fetchServerData(this.teamId);
-    this.fetchVTime().then(() => {
-      this.vtimeHandle = setInterval(() => {
-        this.fetchVTime();
-      }, config.fetchVTimeInterval);
-    });
+    this.vtimeHandle = setTimeout(this.fetchVTimeWrap, config.fetchVTimeInterval);
   },
   watch: {
     apiErrorCount: (val) => {
@@ -93,6 +89,10 @@ export default {
       'fetchServerData',
       'fetchVTime',
     ]),
+    fetchVTimeWrap() {
+      this.fetchVTime();
+      this.vtimeHandle = setTimeout(this.fetchVTimeWrap, config.fetchVTimeInterval);
+    },
   },
   computed: {
     ...mapState([

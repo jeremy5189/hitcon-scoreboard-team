@@ -52,11 +52,7 @@ export default {
     };
   },
   created() {
-    this.handle = setInterval(() => {
-      this.fetchServerData(this.teamId).then(() => {
-        this.updateChart();
-      });
-    }, config.fetchInterval);
+    this.handle = setTimeout(this.polling, config.fetchInterval);
   },
   computed: {
     ...mapState([
@@ -68,6 +64,12 @@ export default {
     ...mapActions([
       'fetchServerData',
     ]),
+    polling() {
+      this.fetchServerData(this.teamId).then(() => {
+        this.updateChart();
+        this.handle = setTimeout(this.polling, config.fetchInterval);
+      });
+    },
     updateChart() {
       // API return data in this.server
       this.$refs.bandwidth_chart.updateDisplayedValue();
