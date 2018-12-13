@@ -16,7 +16,7 @@
         </svg>
       </div>
       <div class="col-2 col-title">
-        <h1>{{ displayValue }}</h1>
+        <h1>{{ displayValue() }}</h1>
         <h3>{{ unit }}</h3>
       </div>
     </div>
@@ -43,15 +43,7 @@ export default {
     },
   },
   computed: {
-    displayValue() {
-      let append = 0;
-      if (this.filterParamMap[this.title].append) {
-        append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
-        console.log(append);
-      }
-      return (this.current_value * this.filterParamMap[this.title].ratio + append)
-        .toFixed(this.filterParamMap[this.title].toFixed);
-    },
+    //
   },
   data() {
     return {
@@ -98,7 +90,7 @@ export default {
     this.stack = Array.from(
       { length: 100 },
       () => Math.max(0, Math.min(this.domainMap[this.title][1], parseInt(random(), Number))),
-    ).concat(this.displayValue);
+    ).concat(this.displayValue());
 
     this.svg = d3.select(this.$refs.graph);
     this.createPath = d3.line().x((d, i) => this.x(i)).y(d => this.y(d));
@@ -124,9 +116,18 @@ export default {
     this.path.attr('transform', 'translate(1000, 0)');
   },
   methods: {
+    displayValue() {
+      let append = 0;
+      if (this.filterParamMap[this.title].append) {
+        append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
+        console.log(append);
+      }
+      return (this.current_value * this.filterParamMap[this.title].ratio + append)
+        .toFixed(this.filterParamMap[this.title].toFixed);
+    },
     tick() {
       // Push a new data point onto the back.
-      this.stack.push(this.displayValue);
+      this.stack.push(this.displayValue());
 
       // Redraw the line.
       this.path.attr('d', this.createPath)
