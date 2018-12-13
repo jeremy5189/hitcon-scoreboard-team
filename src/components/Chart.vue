@@ -51,17 +51,17 @@ export default {
   data() {
     return {
       domainMap: {
-        BANDWIDTH: [0, 1000],
-        ENERGY: [0, 100],
+        BANDWIDTH: [0, 100],
+        ENERGY: [0, 10],
         'WIFI CLIENT': [0, 50],
       },
       filterParamMap: {
         BANDWIDTH: {
-          ratio: 1,
-          toFixed: 0,
+          ratio: 0.000001, // bps to Mbps
+          toFixed: 1,
         },
         ENERGY: {
-          ratio: 0.1,
+          ratio: 0.01,
           toFixed: 2,
         },
         'WIFI CLIENT': {
@@ -163,16 +163,18 @@ export default {
   font-weight: 500;
   text-align: center;
   margin-bottom: 0px;
+  display: inline-block;
 }
 
 .col-title h3 {
   color: #a1ecfb;
-  font-size: 36px;
+  font-size: 24px;
   align-self: center;
   font-weight: 400;
   text-align: center;
   margin-bottom: 0px;
   margin-left: 7px;
+  display: inline-block;
 }
 
 .col-center {

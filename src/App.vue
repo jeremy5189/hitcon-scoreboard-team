@@ -68,8 +68,8 @@ export default {
   created() {
     const urlParams = new URLSearchParams(window.location.search);
     const teamId = urlParams.get('team_id');
-    console.log('?teamId=', teamId);
     this.setTeamId(teamId === null ? '1' : teamId);
+    console.log('teamId', teamId);
     this.fetchServerData(this.teamId);
     this.fetchVTime().then(() => {
       this.vtimeHandle = setInterval(() => {
