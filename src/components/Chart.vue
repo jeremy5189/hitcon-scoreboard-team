@@ -84,27 +84,25 @@ export default {
       svg: null,
       main: null,
       path: null,
-      x: null,
-      y: null,
       createPath: null,
     };
   },
   mounted() {
-    this.x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-    this.y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
+    let x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
+    let y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
     console.log(this.title, 'domain=', this.domainMap[this.title]);
     const random = d3.randomNormal(
-      this.domainMap[this.title][1] / 2,
-      this.domainMap[this.title][1] / 2,
+      this.domainMap[this.title][1] / 3,
+      this.domainMap[this.title][1] / 50,
     );
 
     this.stack = Array.from(
       { length: 100 },
-      () => Math.max(0, Math.min(this.domainMap[this.title][1], parseInt(random(), Number))),
+      () => Math.max(0, Math.min(this.domainMap[this.title][1], random())),
     ).concat(this.displayValue());
 
     this.svg = d3.select(this.$refs.graph);
-    this.createPath = d3.line().x((d, i) => this.x(i)).y(d => this.y(d));
+    this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
     this.main = this.svg.append('g');
 
     this.main.append('defs').append('clipPath')
