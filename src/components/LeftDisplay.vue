@@ -59,7 +59,7 @@ export default {
   margin-left: -25px;
   margin-right: 25px;
   flex-direction: column;
-  padding: 20px 0px;
+  padding: 20px 0 0 0;
   box-shadow: 0 0 10px #97d0de;
 }
 span {

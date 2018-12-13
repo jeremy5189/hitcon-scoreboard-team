@@ -199,6 +199,7 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
+  padding-right: 3px;
 }
 
 .col-title h1 {
@@ -212,11 +213,11 @@ export default {
 
 .col-title h3 {
   color: #a1ecfb;
-  font-size: 24px;
+  font-size: 32px;
   align-self: center;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: -2px;
   margin-left: 7px;
   display: inline-block;
 }

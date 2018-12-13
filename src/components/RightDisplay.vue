@@ -58,8 +58,8 @@ export default {
   height: 450px;
   margin-right: -25px;
   margin-left: 25px;
+  padding: 20px 0 0 0;
   flex-direction: column;
-  padding: 20px 0px;
 }
 span {
   color: #a1ecfb;
