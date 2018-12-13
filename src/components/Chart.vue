@@ -56,22 +56,22 @@ export default {
   data() {
     return {
       domainMap: {
-        BANDWIDTH: [0, 20],
-        ENERGY: [0, 2],
-        'WIFI CLIENT': [0, 10],
+        bandwidth: [0, 20],
+        energy: [0, 2],
+        wifi: [0, 10],
       },
       filterParamMap: {
-        BANDWIDTH: {
+        bandwidth: {
           ratio: 0.000001, // bps to Mbps
           toFixed: 1,
           append: false,
         },
-        ENERGY: {
+        energy: {
           ratio: 0.01,
           toFixed: 2,
           append: true, // random a
         },
-        'WIFI CLIENT': {
+        wifi: {
           ratio: 1,
           toFixed: 0,
           append: false,
@@ -90,16 +90,16 @@ export default {
     this.displayed_value = this.displayValue(this.server[this.col]);
 
     const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-    const y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
-    console.log(this.title, 'domain=', this.domainMap[this.title]);
+    const y = d3.scaleLinear().domain(this.domainMap[this.col]).range([115, 0]);
+    console.log(this.col, 'domain=', this.domainMap[this.col]);
     /* const random = d3.randomNormal(
-      this.domainMap[this.title][1] / 3,
-      this.domainMap[this.title][1] / 50,
+      this.domainMap[this.col][1] / 3,
+      this.domainMap[this.col][1] / 50,
     ); */
 
     this.stack = Array.from(
       { length: 100 },
-      () => (0), // Math.max(0, Math.min(this.domainMap[this.title][1], random())),
+      () => (0), // Math.max(0, Math.min(this.domainMap[this.col][1], random())),
     ).concat(this.displayValue(this.server[this.col]));
 
     this.svg = d3.select(this.$refs.graph);
@@ -150,19 +150,19 @@ export default {
     },
     displayValue(val) {
       let append = 0;
-      if (this.filterParamMap[this.title].append) {
+      if (this.filterParamMap[this.col].append) {
         append = Math.floor((Math.random() - 0.5) * 20)
-          / (10 ** this.filterParamMap[this.title].toFixed);
+          / (10 ** this.filterParamMap[this.col].toFixed);
       }
-      return (val * this.filterParamMap[this.title].ratio + append)
-        .toFixed(this.filterParamMap[this.title].toFixed);
+      return (val * this.filterParamMap[this.col].ratio + append)
+        .toFixed(this.filterParamMap[this.col].toFixed);
     },
     tick() {
       // Push a new data point onto the back.
       this.stack.push(this.displayValue(this.server[this.col]));
 
       const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-      const y = d3.scaleLinear().domain(this.calcDomain(this.title))
+      const y = d3.scaleLinear().domain(this.calcDomain(this.col))
         .range([115, 0]);
       this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
 
