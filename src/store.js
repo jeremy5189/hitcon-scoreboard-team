@@ -66,6 +66,12 @@ export default new Vuex.Store({
       console.log('minus', state.server.bandwidth);
       state.server.bandwidth /= (config.fetchInterval / 2 / 1000);
       console.log('result', state.server.bandwidth);
+
+      if (state.server.bandwidth < 0) {
+        console.log('negative result! outputting zero.');
+        state.server.bandwidth = 0;
+      }
+
       state.prevBandwidth = prevBandwidth;
     },
   },
