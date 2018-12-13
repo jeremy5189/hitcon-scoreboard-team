@@ -16,7 +16,7 @@
         </svg>
       </div>
       <div class="col-2 col-title">
-        <h1>{{ displayValue() }}</h1>
+        <h1>{{ this.displayed_value  }}</h1>
         <h3>{{ unit }}</h3>
       </div>
     </div>
@@ -39,6 +39,10 @@ export default {
       default: 'bandwidth',
     },
     current_value: {
+      type: Number,
+      default: 0,
+    },
+    displayed_value: {
       type: Number,
       default: 0,
     },
@@ -123,17 +127,29 @@ export default {
     this.path.attr('transform', 'translate(1000, 0)');
   },
   methods: {
+    calcDomain() {
+      let lMin = Math.min(...this.stack), lMax = Math.max(...this.stack);
+      let span = lMax - lMin;
+      return [lMin-span*0.1, lMax+span*0.1];
+    },
     displayValue() {
       let append = 0;
+
       if (this.filterParamMap[this.title].append) {
-        append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
+        append = Math.floor(Math.random() * 50) / (10 ** this.filterParamMap[this.title].toFixed);
       }
-      return (this.server[this.col] * this.filterParamMap[this.title].ratio + append)
+      this.displayed_value = (this.server[this.col] * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
+      return this.displayed_value;
     },
     tick() {
       // Push a new data point onto the back.
       this.stack.push(this.displayValue());
+
+      let x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
+      let y = d3.scaleLinear().domain(this.calcDomain())
+        .range([115, 0]);
+      this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
 
       // Redraw the line.
       this.path.attr('d', this.createPath)
@@ -141,7 +157,7 @@ export default {
 
       // Slide it to the left.
       d3.active(this.path.node())
-        .attr('transform', `translate(${this.x(-1)}, 0)`)
+        .attr('transform', `translate(${x(-1)}, 0)`)
         .transition()
         .on('start', this.tick);
 
