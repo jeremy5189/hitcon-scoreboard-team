@@ -17,7 +17,7 @@
           title="ENERGY"
           :current_value="server.energy"
           col="energy"
-          unit="kW"
+          unit="A"
           ref="energy_chart"
         ></Chart>
       </div>

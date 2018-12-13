@@ -56,9 +56,9 @@ export default {
   data() {
     return {
       domainMap: {
-        BANDWIDTH: [0, 100],
-        ENERGY: [0, 1.5],
-        'WIFI CLIENT': [0, 50],
+        BANDWIDTH: [0, 20],
+        ENERGY: [0, 2],
+        'WIFI CLIENT': [0, 10],
       },
       filterParamMap: {
         BANDWIDTH: {
@@ -68,7 +68,7 @@ export default {
         },
         ENERGY: {
           ratio: 0.01,
-          toFixed: 3,
+          toFixed: 2,
           append: true, // random a
         },
         'WIFI CLIENT': {
@@ -149,7 +149,8 @@ export default {
     displayValue(val) {
       let append = 0;
       if (this.filterParamMap[this.title].append) {
-        append = Math.floor(Math.random() * 50) / (10 ** this.filterParamMap[this.title].toFixed);
+        append = Math.floor((Math.random() - 0.5) * 20)
+          / (10 ** this.filterParamMap[this.title].toFixed);
       }
       return (val * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
