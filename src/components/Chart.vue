@@ -47,6 +47,7 @@ export default {
       let append = 0;
       if (this.filterParamMap[this.title].append) {
         append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
+        console.log(append);
       }
       return (this.current_value * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
