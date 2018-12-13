@@ -6,4 +6,5 @@ export default {
   fetchInterval: 1000,
   fetchVTimeInterval: 1000000,
   sponsorURL: 'http://localhost:8000/sponsors',
+  autoRedirect: false
 };

@@ -80,7 +80,7 @@ export default {
   watch: {
     apiErrorCount: (val) => {
       console.log('apiErrorCount', val);
-      if (val >= 3) {
+      if (val >= 3 && config.autoRedirect) {
         window.location.href = config.sponsorURL;
       }
     },
