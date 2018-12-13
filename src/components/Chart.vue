@@ -57,7 +57,7 @@ export default {
     return {
       domainMap: {
         BANDWIDTH: [0, 100],
-        ENERGY: [0, 1],
+        ENERGY: [0, 1.5],
         'WIFI CLIENT': [0, 50],
       },
       filterParamMap: {
