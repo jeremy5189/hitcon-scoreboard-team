@@ -132,16 +132,16 @@ export default {
         this.displayed_value = this.displayValue(this.server[this.col]);
       }
     },
-    calcDomain() {
+    calcDomain(title) {
       const lMin = Math.min(...this.stack);
-      const lMax = Math.max(...this.stack);
+      const lMax = Math.max(...this.stack, this.domainMap[title][1]);
       const span = lMax - lMin;
       let go = 0;
 
       if (span > 0) {
         go = [lMin - span * 0.1, lMax + span * 0.1];
       } else {
-        go = [lMin - 1, lMax + 2];
+        go = [lMin - 1, lMax + 5];
       }
 
       return go;
@@ -160,7 +160,7 @@ export default {
       this.stack.push(this.displayValue(this.server[this.col]));
 
       const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-      const y = d3.scaleLinear().domain(this.calcDomain())
+      const y = d3.scaleLinear().domain(this.calcDomain(this.title))
         .range([115, 0]);
       this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
 
