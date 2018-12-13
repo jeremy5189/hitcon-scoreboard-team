@@ -127,8 +127,10 @@ export default {
   },
   methods: {
     updateDisplayedValue() {
-      console.log('updateDisplayedValue');
-      if (this.server[this.col] > 0) {
+      if (this.server[this.col] === 0 && this.col === 'bandwidth') {
+        console.log('omitting bandwidth value!');
+      } else {
+        console.log('updateDisplayedValue');
         this.displayed_value = this.displayValue(this.server[this.col]);
       }
     },
