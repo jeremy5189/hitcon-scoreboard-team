@@ -52,7 +52,7 @@ export default {
     return {
       domainMap: {
         BANDWIDTH: [0, 100],
-        ENERGY: [0, 10],
+        ENERGY: [0, 1],
         'WIFI CLIENT': [0, 50],
       },
       filterParamMap: {
@@ -81,7 +81,7 @@ export default {
   mounted() {
     this.x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
     this.y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
-    console.log(this.title, 'domain=', this.domainMap);
+    console.log(this.title, 'domain=', this.domainMap[this.title]);
     const random = d3.randomNormal(
       this.domainMap[this.title][1] / 2,
       this.domainMap[this.title][1] / 2,

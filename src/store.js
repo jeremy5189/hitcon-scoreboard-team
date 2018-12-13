@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import createLogger from 'vuex/dist/logger';
+import createPersistedState from 'vuex-persistedstate';
 import config from './config';
 
 Vue.use(Vuex);
@@ -9,6 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [
     createLogger(),
+    createPersistedState(),
   ],
   state: {
     server: {
@@ -41,7 +43,7 @@ export default new Vuex.Store({
         'energy',
         server.energy,
         'wifi',
-        server.wifim
+        server.wifi,
       );
     },
     SET_TEAM_ID: (state, teamId) => {

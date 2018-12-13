@@ -18,7 +18,7 @@ $mock = [
   'alive_erp' => (rand(0, 1) === 1 ? true : false),
   'alive_sslvpn' => (rand(0, 1) === 1 ? true : false),
   'bandwidth' => nrand(500 * 1000000, 100 * 1000000),
-  'energy' => nrand(500, 100),
+  'energy' => nrand(50, 10),
   'wifi' => nrand(25, 10)
 ];
 
