@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import * as d3 from 'd3';
 
 export default {
@@ -32,6 +33,10 @@ export default {
     title: {
       type: String,
       default: '-',
+    },
+    col: {
+      type: String,
+      default: 'bandwidth',
     },
     current_value: {
       type: Number,
@@ -43,7 +48,9 @@ export default {
     },
   },
   computed: {
-    //
+    ...mapState([
+      'server',
+    ]),
   },
   data() {
     return {
@@ -120,9 +127,8 @@ export default {
       let append = 0;
       if (this.filterParamMap[this.title].append) {
         append = Math.floor(Math.random() * 10) / (10 ** this.filterParamMap[this.title].toFixed);
-        console.log(append);
       }
-      return (this.current_value * this.filterParamMap[this.title].ratio + append)
+      return (this.server[this.col] * this.filterParamMap[this.title].ratio + append)
         .toFixed(this.filterParamMap[this.title].toFixed);
     },
     tick() {

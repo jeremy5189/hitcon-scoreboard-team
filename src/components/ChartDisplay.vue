@@ -5,6 +5,7 @@
         <Chart
           title="BANDWIDTH"
           :current_value="server.bandwidth"
+          col="bandwidth"
           unit="Mbps"
         ></Chart>
       </div>
@@ -14,6 +15,7 @@
         <Chart
           title="ENERGY"
           :current_value="server.energy"
+          col="energy"
           unit="kW"
         ></Chart>
       </div>
@@ -23,6 +25,7 @@
         <Chart
           title="WIFI CLIENT"
           :current_value="server.wifi"
+          col="wifi"
           unit="DEVICES"
         ></Chart>
       </div>
