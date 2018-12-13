@@ -2,10 +2,10 @@
   <div id="StaticText">
     <img id="logo" src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
     <div class="row">
-      <div class="col">
+      <div class="col-3">
         <img src="../assets/wifi.svg" id="wifi">
       </div>
-      <div class="col flex">
+      <div class="col-9 flex">
         <span>
           <h2>{{ ssidMap[teamId][0] }}</h2>
           <h2>{{ ssidMap[teamId][1] }}</h2>
@@ -50,12 +50,13 @@ export default {
   flex-direction: column;
 }
 h2 {
-  color: rgba(161, 236, 251, 0.7);
+  color: rgba(161, 236, 251, 1);
   align-self: center;
   font-weight: 500;
   margin-bottom: 0px;
-  margin-top: 8px;
-  letter-spacing: 1px;
+  margin-top: 6px;
+  letter-spacing: 2px;
+  font-family: 'Microsoft JhengHei', Arial, sans-serif;
 }
 span h2:first-child {
   margin-top: 10px;
