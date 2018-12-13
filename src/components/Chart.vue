@@ -91,14 +91,14 @@ export default {
     const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
     const y = d3.scaleLinear().domain(this.domainMap[this.title]).range([115, 0]);
     console.log(this.title, 'domain=', this.domainMap[this.title]);
-    const random = d3.randomNormal(
+    /* const random = d3.randomNormal(
       this.domainMap[this.title][1] / 3,
       this.domainMap[this.title][1] / 50,
-    );
+    ); */
 
     this.stack = Array.from(
       { length: 100 },
-      () => Math.max(0, Math.min(this.domainMap[this.title][1], random())),
+      () => (0), // Math.max(0, Math.min(this.domainMap[this.title][1], random())),
     ).concat(this.displayValue());
 
     this.svg = d3.select(this.$refs.graph);
