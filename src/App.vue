@@ -71,7 +71,8 @@ export default {
     const urlParams = new URLSearchParams(window.location.search);
     const teamId = urlParams.get('team_id');
     this.setTeamId(teamId === null ? '1' : teamId);
-    console.log('teamId', teamId);
+    console.log('teamId', this.teamId);
+    document.title = `T${this.teamId}: HITCON DEFENCE`;
     this.fetchServerData(this.teamId);
     this.vtimeHandle = setTimeout(this.fetchVTimeWrap, config.fetchVTimeInterval);
   },
