@@ -24,7 +24,9 @@
           <FlashAlert
             v-if="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
           ></FlashAlert>
-          <StaticText v-else></StaticText>
+          <StaticText
+            :show_alert="(server.under_attack || server.ddos > 0) && server.alive_level > 0"
+          ></StaticText>
         </div>
         <div class="col">
           <RightDisplay></RightDisplay>
@@ -131,8 +133,11 @@ body {
 }
 .middle-row .col-center {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .bottom-row .col {
   padding: 0px 0px;
