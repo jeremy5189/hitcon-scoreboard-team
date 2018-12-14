@@ -1,6 +1,7 @@
 <template>
   <div id="StaticText">
-    <img v-show="!show_alert" id="logo" src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
+    <img v-show="!show_alert" id="logo"
+      src="../assets/hitcon-reverse.svg" alt="hitcon-defence-logo">
     <div class="row">
       <div class="col-3">
         <img src="../assets/wifi.svg" id="wifi">
