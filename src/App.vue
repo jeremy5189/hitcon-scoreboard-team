@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <TopDisplay :text="`Score ${server.score}`"></TopDisplay>
+          <TopDisplay text="Score -"></TopDisplay>
         </div>
         <div class="col-1"></div>
         <div class="col-4">
