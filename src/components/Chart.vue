@@ -140,7 +140,7 @@ export default {
       let go = [];
 
       if (span > 0) {
-        if (this.col === 'bandwidth') {
+        if (this.col === 'bandwidth' || this.col === 'energy') {
           go = [lMin - span * 0.1, lMax + span * 0.1];
         } else go = [0, lMax + span * 0.1];
       } else {
