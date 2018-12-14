@@ -8,8 +8,8 @@
     </span>
     <span>
       <h3>SERVICE: ERP</h3>
-      <h1 :class="displayBoolean(true)">
-        {{ displayBoolean(true) }}
+      <h1 :class="displayBoolean(server.alive_erp)">
+        {{ displayBoolean(server.alive_erp) }}
       </h1>
     </span>
     <span>
