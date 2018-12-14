@@ -135,14 +135,14 @@ export default {
     },
     calcDomain(title) {
       const lMin = Math.min(...this.stack);
-      const lMax = Math.max(...this.stack, this.domainMap[title][1]);
+      const lMax = Math.max(...this.stack);
       const span = lMax - lMin;
       let go = [];
 
       if (span > 0) {
         if (this.col === 'bandwidth' || this.col === 'energy') {
           go = [lMin - span * 0.1, lMax + span * 0.1];
-        } else go = [0, lMax + span * 0.1];
+        } else go = [0, Math.max(lMax, this.domainMap[title][1]) + span * 0.1];
       } else {
         go = [0, lMax + 5];
       }
