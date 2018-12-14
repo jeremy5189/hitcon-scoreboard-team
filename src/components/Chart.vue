@@ -67,7 +67,7 @@ export default {
           append: false,
         },
         energy: {
-          ratio: 0.01,
+          ratio: 0.1,
           toFixed: 2,
           append: true, // random a
         },
