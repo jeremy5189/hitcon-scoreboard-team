@@ -20,7 +20,7 @@ $mock = [
   'alive_sslvpn' => (rand(0, 1) === 1 ? true : false),
   'bandwidth' => nrand(50 * 1000000, 1 * 1000000),
   'energy' => nrand(50, 2),
-  'wifi' => nrand(15, 2)
+  'wifi' => nrand(2, 0)
 ];
 
 $mock2 = [

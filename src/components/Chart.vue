@@ -56,8 +56,8 @@ export default {
   data() {
     return {
       domainMap: {
-        bandwidth: [0, 10],
-        energy: [0, 2],
+        bandwidth: [0, 20],
+        energy: [0, 8],
         wifi: [0, 10],
       },
       filterParamMap: {
@@ -90,7 +90,7 @@ export default {
     this.displayed_value = this.displayValue(this.server[this.col]);
 
     const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
-    const y = d3.scaleLinear().domain(this.domainMap[this.col]).range([115, 0]);
+    const y = d3.scaleLinear().domain(this.domainMap[this.col]).range([10, 0]);
     /* const random = d3.randomNormal(
       this.domainMap[this.col][1] / 3,
       this.domainMap[this.col][1] / 50,
@@ -109,7 +109,7 @@ export default {
       .attr('id', 'clip')
       .append('rect')
       .attr('width', 1256)
-      .attr('height', 115);
+      .attr('height', 110);
 
     this.path = this.main.append('g')
       .attr('clip-path', 'url(#clip)')
@@ -140,9 +140,9 @@ export default {
       let go = [];
 
       if (span > 0) {
-        go = [lMin - span * 0.1, lMax + span * 0.1];
+        go = [0, lMax + span * 0.1];
       } else {
-        go = [lMin - 1, lMax + 5];
+        go = [0, lMax + 5];
       }
 
       console.log(this.col, 'domain=', go[0], go[1]);
@@ -163,7 +163,7 @@ export default {
 
       const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
       const y = d3.scaleLinear().domain(this.calcDomain(this.col))
-        .range([115, 0]);
+        .range([(this.col === 'wifi') ? 103 : 108, 0]);
       this.createPath = d3.line().x((d, i) => x(i)).y(d => y(d));
 
       // Redraw the line.
@@ -194,7 +194,7 @@ export default {
 }
 #Chart svg {
   width: 1256px;
-  height: 115px;
+  height: 110px;
 }
 
 .col-title {
