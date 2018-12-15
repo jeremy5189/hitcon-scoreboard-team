@@ -31,7 +31,6 @@ export default {
   border: 4px solid #26dafd;
   background-color: rgba(212, 5, 1, 0.4);
   border-radius: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;

@@ -35,12 +35,12 @@ export default {
   data() {
     return {
       ssidMap: {
-        1: ['Team1-Guest', '023939889'],
-        2: ['Team2-Guest', '028825252'],
-        3: ['Team3-Guest', '024121234'],
-        4: ['Team4-Guest', '024128000'],
-        5: ['Team5-Guest', '0800080365'],
-        6: ['Team6-Guest', '40666888'],
+        1: ['Team1-Guest', '00001111'],
+        2: ['Team2-Guest', '00001111'],
+        3: ['Team3-Guest', '00001111'],
+        4: ['Team4-Guest', '00001111'],
+        5: ['Team5-Guest', '00001111'],
+        6: ['Team6-Guest', '00001111'],
       },
     };
   },

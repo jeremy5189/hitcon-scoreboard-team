@@ -37,14 +37,6 @@ export default new Vuex.Store({
   mutations: {
     SET_LOCAL_DATA: (state, server) => {
       state.server = server;
-      console.log(
-        'bandwidth',
-        server.bandwidth,
-        'energy',
-        server.energy,
-        'wifi',
-        server.wifi,
-      );
     },
     SET_TEAM_ID: (state, teamId) => {
       state.teamId = teamId;
@@ -59,19 +51,14 @@ export default new Vuex.Store({
       state.apiErrorCount = 0;
     },
     MINUS_PREV_BANDWIDTH: (state) => {
+      // reading bandwidth from SNMP
+      // minus previous value to deal with sum of value
       const prevBandwidth = state.server.bandwidth;
-      console.log('prevBandwidth', state.prevBandwidth);
-      console.log('currentBandwidth', state.server.bandwidth);
       state.server.bandwidth -= state.prevBandwidth;
-      console.log('minus', state.server.bandwidth);
       state.server.bandwidth /= (config.fetchInterval / 2 / 1000);
-      console.log('result', state.server.bandwidth);
-
       if (state.server.bandwidth < 0) {
-        console.log('negative result! outputting zero.');
         state.server.bandwidth = 0;
       }
-
       state.prevBandwidth = prevBandwidth;
     },
   },
@@ -99,10 +86,7 @@ export default new Vuex.Store({
       axios.get(`${config.baseURLVTime}${config.vtimePath}`).then((resp) => {
         commit('SET_VTIME', resp.data);
         return Promise.resolve(resp.data);
-      }).catch((err) => {
-        console.error(err);
-        return Promise.reject(err);
-      });
+      }).catch(err => Promise.reject(err));
     },
   },
 });

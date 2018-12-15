@@ -51,7 +51,6 @@ export default {
   background-color: rgba(0, 72, 110, 0.4);
   border-radius: 10px;
   box-shadow: 0 0 8px #97d0de;
-
   display: flex;
   justify-content: space-around;
   align-content: center;

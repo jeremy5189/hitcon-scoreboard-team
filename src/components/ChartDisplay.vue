@@ -84,7 +84,6 @@ export default {
 #ChartDisplay {
   border: 4px solid #26dafd;
   background-color: rgba(0, 72, 110, 0.4);
-
   margin-top: 81px;
   margin-bottom: 0px;
   height: 382px;

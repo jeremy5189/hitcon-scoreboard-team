@@ -69,7 +69,7 @@ export default {
         energy: {
           ratio: 0.1,
           toFixed: 2,
-          append: true, // random a
+          append: true, // random
         },
         wifi: {
           ratio: 1,
@@ -86,19 +86,14 @@ export default {
     };
   },
   mounted() {
-    // Init
     this.displayed_value = this.displayValue(this.server[this.col]);
 
     const x = d3.scaleLinear().domain([0, 100]).range([0, 1256]);
     const y = d3.scaleLinear().domain(this.domainMap[this.col]).range([10, 0]);
-    /* const random = d3.randomNormal(
-      this.domainMap[this.col][1] / 3,
-      this.domainMap[this.col][1] / 50,
-    ); */
 
     this.stack = Array.from(
       { length: 100 },
-      () => (0), // Math.max(0, Math.min(this.domainMap[this.col][1], random())),
+      () => (0),
     ).concat(this.displayValue(this.server[this.col]));
 
     this.svg = d3.select(this.$refs.graph);
@@ -147,7 +142,7 @@ export default {
         go = [0, lMax + 5];
       }
 
-      console.log(this.col, 'domain=', go[0], go[1]);
+      // console.log(this.col, 'domain=', go[0], go[1]);
       return go;
     },
     displayValue(val) {
